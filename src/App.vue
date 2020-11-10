@@ -1,18 +1,21 @@
 <template>
   <div id="app">
       <GameExplanation></GameExplanation>
+      <YourWealthContainer></YourWealthContainer>
   </div>
 </template>
 
 <script>
 
 import GameExplanation from './components/GameExplanation'
+import YourWealthContainer from './containers/YourWealthContainer'
 
 export default {
 
   name: 'App',
   components: {
-    GameExplanation
+    GameExplanation,
+    YourWealthContainer
   }
 }
 </script>

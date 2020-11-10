@@ -1,0 +1,15 @@
+@mixin heading-styling-main {
+  color: $color-green-dark;
+  font-weight: 700;
+}
+
+@mixin heading-styling-alt {
+  color: $color-off-white;
+  font-weight: 700;
+}
+
+@mixin section-styling {
+  background: $color-cream;
+  box-shadow: $box-shadow-sm;
+  padding: 1rem;
+}

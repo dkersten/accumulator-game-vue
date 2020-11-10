@@ -17,6 +17,7 @@ export default {
 <style lang="scss" scoped>
 
     @import '../assets/scss/variables.scss';
+    @import '../assets/scss/mixins.scss';
 
     .explanation-container {
 
@@ -30,10 +31,9 @@ export default {
         }
 
         h1 {
-        color: $color-green-dark;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-bottom: $vertical-spacing-sm;
+            @include heading-styling-main;
+            font-size: 2rem;
+            margin-bottom: $vertical-spacing-sm;
         }
 
         p {
