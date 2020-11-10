@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-      <h1>Accumulator Game</h1>
-    <h2>Blah</h2>
+      <GameExplanation></GameExplanation>
   </div>
 </template>
 
 <script>
 
+import GameExplanation from './components/GameExplanation'
+
 export default {
+
   name: 'App',
   components: {
-    
+    GameExplanation
   }
 }
 </script>
@@ -22,19 +24,13 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-  @import './assets/scss/variables.scss';
 
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: red;
     max-width: 1400px;
+    padding: 0 1rem;
     margin: 2rem auto;
-
-    h1 {
-      color: $color-green-dark;
-      font-weight: 700;
-    }
   }
 </style>
