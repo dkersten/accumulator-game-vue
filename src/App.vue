@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <h1>Accumulator Game</h1>
+      <h1>Accumulator Game</h1>
+    <h2>Blah</h2>
   </div>
 </template>
 
@@ -14,13 +15,26 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style >
+  body {
+    background: #f7f7f7;
+  }
+</style>
+
+<style lang="scss" scoped>
+  @import './assets/scss/variables.scss';
+
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: red;
+    max-width: 1400px;
+    margin: 2rem auto;
+
+    h1 {
+      color: $color-green-dark;
+      font-weight: 700;
+    }
+  }
 </style>
