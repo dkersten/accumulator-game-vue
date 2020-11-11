@@ -2,17 +2,19 @@
     <section class="rw-purchases">
         <h3>"Buy" Real World Things at Real World Prices</h3>
         <div class="rw-purchases-container">
-            test
+            <RWPurchaseCard></RWPurchaseCard>
         </div>
     </section>
 </template>
 
 <script>
 
+import RWPurchaseCard from '../components/RWPurchaseCard'
+
 export default {
     name: 'RWPurchases',
     components: {
-        
+        RWPurchaseCard
     }
 }
 </script>
@@ -24,6 +26,8 @@ export default {
 
     .rw-purchases {
         @include section-styling;
+        margin-left: auto;
+        margin-right: auto;
 
         h3 {
             @include heading-styling-main;
