@@ -14,10 +14,15 @@
             </div>
             <div class="bottom">
                 <div class="button-container">
-                    <button class="more-info">More Info</button>
+                    <button 
+                        v-on:click="property.showMoreInfo = !property.showMoreInfo"
+                        class="more-info">
+                            {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
+                    </button>
+
                     <button class="buy">Purchase</button>
                 </div>
-                <div class="more-info-container">
+                <div v-show="property.showMoreInfo" class="more-info-container">
                     <ul>
                         <li v-for="feature in property.features" :key="feature">
                             {{feature}}
@@ -49,7 +54,8 @@ export default {
                         "Private pool, spa, and gym",
                         "Tennis court, golf putting green, and 2 lane bowling alley on premises",
                         "Home theater and wine cellar on premises"
-                    ]
+                    ],
+                    showMoreInfo: false
                 },
                 {
                     num: 2,
@@ -60,7 +66,8 @@ export default {
                         "Located along the boardwalk just north of the Pier of Malibu",
                         "180 degree views of the beach and Pacific Ocean",
                         "4 parking spaces in an attached garage"
-                    ]
+                    ],
+                    showMoreInfo: false
                 },
                 {
                     num: 3,
@@ -72,7 +79,8 @@ export default {
                         "Private views of the Pacific Ocean",
                         "4 Car Attached Garage",
                         "1275 square foot deck facing the ocean"
-                    ]
+                    ],
+                    showMoreInfo: false
                 },
                 {
                     num: 4,
@@ -83,7 +91,8 @@ export default {
                         "82nd floor Penthouse 3 blocks from Central Park",
                         "360 degree views of NYC",
                         "Indoor pool, fitness center, spa and other amenities on premises"
-                    ]
+                    ],
+                    showMoreInfo: false
                 },
                 {
                     num: 5,
@@ -94,7 +103,8 @@ export default {
                         "Waterfront property with private dock",
                         "Private swimming pool and hot tub overlooking the water",
                         "Access to community clubhouse and tennis courts"
-                    ]
+                    ],
+                    showMoreInfo: false
                 }
             ]
         }
