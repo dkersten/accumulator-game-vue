@@ -1,15 +1,20 @@
 @mixin heading-styling-main {
   color: $color-green-dark;
   font-weight: 700;
+  text-align: center;
+  margin-bottom: $vertical-spacing-md;
 }
 
 @mixin heading-styling-alt {
   color: $color-off-white;
   font-weight: 700;
+  text-align: center;
+  margin-bottom: $vertical-spacing-md;
 }
 
 @mixin section-styling {
   background: $color-cream;
   box-shadow: $box-shadow-sm;
   padding: 1rem;
+  margin-bottom: $vertical-spacing-md;
 }

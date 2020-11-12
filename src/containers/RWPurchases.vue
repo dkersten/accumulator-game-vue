@@ -26,13 +26,10 @@ export default {
 
     .rw-purchases {
         @include section-styling;
-        margin-left: auto;
-        margin-right: auto;
 
         h3 {
             @include heading-styling-main;
-            text-align: center;
-            margin-bottom: $vertical-spacing-md;
+            font-size: $font-paragraph-lg;
         }
 
         .rw-purchases-container {

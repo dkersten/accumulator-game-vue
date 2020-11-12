@@ -3,18 +3,21 @@
         <h2>Squander Your Wealth... Its Fun</h2>
         <div class="inner-container">
             <RWPurchases></RWPurchases>
+            <RichestContainer></RichestContainer>
         </div>
     </div>
 </template>
 
 <script>
 
-import RWPurchases from './RWPurchases'
+import RWPurchases from './RWPurchases';
+import RichestContainer from './RichestContainer';
 
 export default {
     name: 'YourWealthContainer',
     components: {
-        RWPurchases
+        RWPurchases,
+        RichestContainer
     }
 }
 
@@ -34,6 +37,18 @@ export default {
             @include heading-styling-main;
             font-size: $font-header-sm;
             margin-bottom: $vertical-spacing-sm;
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+        .inner-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            > * {
+                flex-basis: 45%;
+            }
         }
     }
 </style>
