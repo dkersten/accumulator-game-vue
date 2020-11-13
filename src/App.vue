@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-      <GameExplanation></GameExplanation>
-      <YourWealthContainer></YourWealthContainer>
+    <GameExplanation></GameExplanation>
+    <BusinessContainer></BusinessContainer>
+    <YourWealthContainer></YourWealthContainer>
   </div>
 </template>
 
@@ -9,13 +10,15 @@
 
 import GameExplanation from './components/GameExplanation'
 import YourWealthContainer from './containers/YourWealthContainer'
+import BusinessContainer from './containers/BusinessContainer'
 
 export default {
 
   name: 'App',
   components: {
     GameExplanation,
-    YourWealthContainer
+    YourWealthContainer,
+    BusinessContainer
   }
 }
 </script>
