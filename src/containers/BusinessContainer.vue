@@ -2,6 +2,7 @@
     <div class="main-container">
         <StatsContainer></StatsContainer>
         <PropertiesContianer></PropertiesContianer>
+        <PurchaseContainer></PurchaseContainer>
     </div>
 </template>
 
@@ -9,13 +10,15 @@
 
 import StatsContainer from '../containers/StatsContainer'
 import PropertiesContianer from './PropertiesContainer'
+import PurchaseContainer from './PurchaseContainer'
 
 export default {
 
     name: "BusinessContainer",
     components: {
         StatsContainer,
-        PropertiesContianer
+        PropertiesContianer,
+        PurchaseContainer
     }
 
 }
@@ -36,6 +39,7 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: flex-start;
 
         .stats-container {
             flex-basis: 100%;
