@@ -1,32 +1,34 @@
 <template>
-    <div class="property">
+    <div>
+        <div v-for="property in properties" :key="property.name" class="property">
             <div class="left">
-              <h3>Vending Machine</h3>
-            <span class="cost">
-              Cost: $<span class="price"></span>
-            </span>
+                <h3>{{property.name}}</h3>
+                <span class="cost">
+                    Cost: $<span class="price">{{property.price.toLocaleString()}}</span>
+                </span>
             </div>
             <div class="right">
-              <span class="quantity">
-                
-              </span>
+                <span class="quantity">
+                    {{property.numOwned}}
+                </span>
             </div>
             <div class="bottom">
-              <div class="button-container">
-                <button class="more-info hidden">
-                  More Info <i class="fal fa-angle-down"></i>
-                </button>
-                <button class="buy">
-                  Purchase
-                </button>
-              </div>
-              <div class="more-info-container hide">
-                <ul>
-                  <li>Increase dollars per second by <span class="dps-rate-vending">4</span></li>
-                </ul>
-              </div>
+                <div class="button-container">
+                    <button class="more-info hidden">
+                    More Info <i class="fal fa-angle-down"></i>
+                    </button>
+                    <button class="buy">
+                    Purchase
+                    </button>
+                </div>
+                <div class="more-info-container ">
+                    <ul>
+                        <li>Increase dollars per second by <span class="dps-rate-vending">{{property.scorePerSecond}}</span></li>
+                    </ul>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -34,6 +36,43 @@ export default {
     name: "PropertyCard",
     components: {
 
+    },
+    
+    data() {
+        return {
+            properties: [
+                {
+                    name: "Vending Machine",
+                    price: 10,
+                    numOwned: 0,
+                    scorePerSecond: 4
+                },
+                {
+                    name: "Food Cart",
+                    price: 100,
+                    numOwned: 0,
+                    scorePerSecond: 40
+                },
+                {
+                    name: "Food Truck",
+                    price: 1000,
+                    numOwned: 0,
+                    scorePerSecond: 75
+                },
+                {
+                    name: "Restaurant",
+                    price: 1000,
+                    numOwned: 0,
+                    scorePerSecond: 400
+                },
+                {
+                    name: "Franchise of Restaurants",
+                    price: 10000,
+                    numOwned: 0,
+                    scorePerSecond: 1000
+                }
+            ]
+        }
     }
 }
 </script>
