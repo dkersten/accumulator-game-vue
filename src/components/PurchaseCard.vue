@@ -16,14 +16,16 @@
             </div>
             <div class="bottom">
               <div class="button-container">
-                <button class="more-info hidden">
-                  More Info <i class="fal fa-angle-down"></i>
-                </button>
+                    <button 
+                        v-on:click="purchase.showMoreInfo = !purchase.showMoreInfo"
+                        class="more-info">
+                            {{purchase.showMoreInfo ? 'Less Info' : 'More Info'}}
+                    </button>
                 <button class="buy">
                   Purchase
                 </button>
               </div>
-              <div class="more-info-container">
+              <div v-show="purchase.showMoreInfo" class="more-info-container">
                 <ul>
                   <li>Increase dollars per second by <span class="dps-rate-food-cart">{{purchase.scorePerSecond}}</span></li>
                 </ul>
@@ -47,37 +49,43 @@ export default {
                     name: "Increase Ingredients Quality",
                     price: 2000,
                     numOwned: 0,
-                    scorePerSecond: 10
+                    scorePerSecond: 10,
+                    showMoreInfo: false
                 },
                 {
                     name: "Employee Training",
                     price: 10000,
                     numOwned: 0,
-                    scorePerSecond: 50
+                    scorePerSecond: 50,
+                    showMoreInfo: false
                 },
                 {
                     name: "Social Media Marketing Campaign",
                     price: 25000,
                     numOwned: 0,
-                    scorePerSecond: 72
+                    scorePerSecond: 72,
+                    showMoreInfo: false
                 },
                 {
                     name: "Print Marketing Campaign",
                     price: 60000,
                     numOwned: 0,
-                    scorePerSecond: 95
+                    scorePerSecond: 95,
+                    showMoreInfo: false
                 },
                 {
                     name: "TV Marketing Campaign",
                     price: 100000,
                     numOwned: 0,
-                    scorePerSecond: 117
+                    scorePerSecond: 117,
+                    showMoreInfo: false
                 },
                 {
                     name: "Upgrade Supply Chain Logistics",
                     price: 250000,
                     numOwned: 0,
-                    scorePerSecond: 155
+                    scorePerSecond: 155,
+                    showMoreInfo: false
                 },
             ]
         }

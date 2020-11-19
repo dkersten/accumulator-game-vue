@@ -14,14 +14,16 @@
             </div>
             <div class="bottom">
                 <div class="button-container">
-                    <button class="more-info hidden">
-                    More Info <i class="fal fa-angle-down"></i>
+                    <button 
+                        v-on:click="property.showMoreInfo = !property.showMoreInfo"
+                        class="more-info">
+                            {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
                     <button class="buy">
                     Purchase
                     </button>
                 </div>
-                <div class="more-info-container ">
+                <div v-show="property.showMoreInfo" class="more-info-container ">
                     <ul>
                         <li>Increase dollars per second by <span class="dps-rate-vending">{{property.scorePerSecond}}</span></li>
                     </ul>
@@ -45,31 +47,36 @@ export default {
                     name: "Vending Machine",
                     price: 10,
                     numOwned: 0,
-                    scorePerSecond: 4
+                    scorePerSecond: 4,
+                    showMoreInfo: false
                 },
                 {
                     name: "Food Cart",
                     price: 100,
                     numOwned: 0,
-                    scorePerSecond: 40
+                    scorePerSecond: 40,
+                    showMoreInfo: false
                 },
                 {
                     name: "Food Truck",
                     price: 1000,
                     numOwned: 0,
-                    scorePerSecond: 75
+                    scorePerSecond: 75,
+                    showMoreInfo: false
                 },
                 {
                     name: "Restaurant",
                     price: 1000,
                     numOwned: 0,
-                    scorePerSecond: 400
+                    scorePerSecond: 400,
+                    showMoreInfo: false
                 },
                 {
                     name: "Franchise of Restaurants",
                     price: 10000,
                     numOwned: 0,
-                    scorePerSecond: 1000
+                    scorePerSecond: 1000,
+                    showMoreInfo: false
                 }
             ]
         }
