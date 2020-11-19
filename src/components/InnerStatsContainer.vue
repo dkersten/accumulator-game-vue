@@ -1,16 +1,22 @@
 <template>
     <div class="inner-stats-container">
-        <p>Your Wealth: $<span class="wealth-count-num">100</span></p>
+        <p>Your Wealth: $<span class="wealth-count-num">{{yourWealth}}</span></p>
         <p>Per Second: $<span class="per-second-num">0</span></p>
         <p>Total Net Worth: $<span class="net-worth-num">0</span></p>
     </div>
 </template>
 
 <script>
+    
+import { mapGetters } from 'vuex'
+
 export default {
     name: "InnerStatsContainer",
     components: {
 
+    },
+    computed: {
+        ...mapGetters(['yourWealth'])
     }
 }
 </script>
