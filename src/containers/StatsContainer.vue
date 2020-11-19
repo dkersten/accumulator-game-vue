@@ -20,6 +20,13 @@ export default {
         increment() {
             this.$store.commit('incrementWealthOnClick')
         }
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            window.setInterval(() => {
+                this.$store.commit('updatePerSecond')
+            }, 1000)
+        })
     }
 }
 </script>
