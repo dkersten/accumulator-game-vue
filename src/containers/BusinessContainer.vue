@@ -1,18 +1,21 @@
 <template>
     <div class="main-container">
         <StatsContainer></StatsContainer>
+        <PropertiesContianer></PropertiesContianer>
     </div>
 </template>
 
 <script>
 
 import StatsContainer from '../containers/StatsContainer'
+import PropertiesContianer from './PropertiesContainer'
 
 export default {
 
     name: "BusinessContainer",
     components: {
-        StatsContainer
+        StatsContainer,
+        PropertiesContianer
     }
 
 }
@@ -24,6 +27,8 @@ export default {
 
     .main-container {
         margin-top: $vertical-spacing-md;
+        border-bottom: 1px solid $color-grey-dark;
+        padding-bottom: $vertical-spacing-xs;
     }
 
     @media only screen and (min-width: 800px) and (max-width: 1239px) {
