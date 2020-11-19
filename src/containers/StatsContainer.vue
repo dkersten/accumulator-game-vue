@@ -1,6 +1,8 @@
 <template>
   <section class="stats-container">
-      <img src="../../public/dollarBill.png" alt="Dollar Bill. Click it to make more money.">
+      <img v-on:click="increment()" 
+        src="../../public/dollarBill.png"
+        alt="Dollar Bill. Click it to make more money.">
       <InnerStatsContainer></InnerStatsContainer>
   </section>
 </template>
@@ -13,6 +15,11 @@ export default {
     name: 'StatsContainer',
     components: {
         InnerStatsContainer
+    },
+    methods: {
+        increment() {
+            this.$store.commit('incrementWealthOnClick')
+        }
     }
 }
 </script>

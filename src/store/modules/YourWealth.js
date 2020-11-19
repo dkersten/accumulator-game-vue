@@ -1,5 +1,5 @@
 const state = {
-    wealth: 1234
+    wealth: 0
 }
 
 const getters = {
@@ -7,11 +7,13 @@ const getters = {
 }
 
 const actions = {
-
+    
 }
 
 const mutations = {
-
+    incrementWealthOnClick (state) {
+        state.wealth++
+    } 
 }
 
 export default {
