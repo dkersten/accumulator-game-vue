@@ -19,8 +19,13 @@
                         class="more-info">
                             {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
-                    <button class="buy">
-                    Purchase
+                    <button
+                        class="buy"
+                        v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                        :disabled="property.canBuy === false"
+                        
+                    >
+                            Purchase
                     </button>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container ">
@@ -48,38 +53,47 @@ export default {
                     price: 10,
                     numOwned: 0,
                     scorePerSecond: 4,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: true
                 },
                 {
                     name: "Food Cart",
                     price: 100,
                     numOwned: 0,
                     scorePerSecond: 40,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Food Truck",
                     price: 1000,
                     numOwned: 0,
                     scorePerSecond: 75,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Restaurant",
                     price: 1000,
                     numOwned: 0,
                     scorePerSecond: 400,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Franchise of Restaurants",
                     price: 10000,
                     numOwned: 0,
                     scorePerSecond: 1000,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 }
             ]
         }
+    },
+    
+    methods: {
+        
     }
 }
 </script>
