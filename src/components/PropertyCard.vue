@@ -23,7 +23,7 @@
                         class="buy"
                         v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
                         :disabled="property.canBuy === false"
-                        
+                        @click="testPurchase()"
                     >
                             Purchase
                     </button>
@@ -39,6 +39,9 @@
 </template>
 
 <script>
+
+// import { mapGetters } from 'vuex'
+
 export default {
     name: "PropertyCard",
     components: {
@@ -91,9 +94,24 @@ export default {
             ]
         }
     },
-    
-    methods: {
+
+    computed: {
         
+
+    },
+
+    methods: {
+        testPurchase: () => {
+            alert("boom")
+        },
+        checkPurchase: () => {
+            // console.log(yourWealth)
+            // for (const property of this.properties) {
+            //     if (this.$store.state.yourWealth >= property.price) {
+            //         console.log("can buy")
+            //     }
+            // }
+        }
     }
 }
 </script>

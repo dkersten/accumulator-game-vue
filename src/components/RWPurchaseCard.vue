@@ -20,7 +20,14 @@
                             {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
 
-                    <button class="buy">Purchase</button>
+                    <button
+                        class="buy"
+                        v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                        :disabled="property.canBuy === false"
+                        @click="testPurchase()"
+                    >
+                        Purchase
+                    </button>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container">
                     <ul>
@@ -55,7 +62,8 @@ export default {
                         "Tennis court, golf putting green, and 2 lane bowling alley on premises",
                         "Home theater and wine cellar on premises"
                     ],
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     num: 2,
@@ -67,7 +75,8 @@ export default {
                         "180 degree views of the beach and Pacific Ocean",
                         "4 parking spaces in an attached garage"
                     ],
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     num: 3,
@@ -80,7 +89,8 @@ export default {
                         "4 Car Attached Garage",
                         "1275 square foot deck facing the ocean"
                     ],
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     num: 4,
@@ -92,7 +102,8 @@ export default {
                         "360 degree views of NYC",
                         "Indoor pool, fitness center, spa and other amenities on premises"
                     ],
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     num: 5,
@@ -104,7 +115,8 @@ export default {
                         "Private swimming pool and hot tub overlooking the water",
                         "Access to community clubhouse and tennis courts"
                     ],
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 }
             ]
         }

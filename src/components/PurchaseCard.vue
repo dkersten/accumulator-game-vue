@@ -21,9 +21,14 @@
                         class="more-info">
                             {{purchase.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
-                <button class="buy">
-                  Purchase
-                </button>
+                    <button
+                        class="buy"
+                        v-bind:class=" purchase.canBuy ? 'enabled' : 'disabled'"
+                        :disabled="purchase.canBuy === false"
+                        @click="testPurchase()"
+                    >
+                        Purchase
+                    </button>
               </div>
               <div v-show="purchase.showMoreInfo" class="more-info-container">
                 <ul>
@@ -50,42 +55,48 @@ export default {
                     price: 2000,
                     numOwned: 0,
                     scorePerSecond: 10,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Employee Training",
                     price: 10000,
                     numOwned: 0,
                     scorePerSecond: 50,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Social Media Marketing Campaign",
                     price: 25000,
                     numOwned: 0,
                     scorePerSecond: 72,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Print Marketing Campaign",
                     price: 60000,
                     numOwned: 0,
                     scorePerSecond: 95,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "TV Marketing Campaign",
                     price: 100000,
                     numOwned: 0,
                     scorePerSecond: 117,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
                 {
                     name: "Upgrade Supply Chain Logistics",
                     price: 250000,
                     numOwned: 0,
                     scorePerSecond: 155,
-                    showMoreInfo: false
+                    showMoreInfo: false,
+                    canBuy: false
                 },
             ]
         }
