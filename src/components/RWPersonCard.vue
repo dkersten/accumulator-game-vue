@@ -74,6 +74,66 @@ export default {
                 }
             ]
         }
+    },
+
+    methods: {
+        formatNumbers: (num) => {
+            const nwNum = num.toString()
+            if (nwNum.length >= 7 && nwNum.length <= 9) {
+                if (nwNum.length === 7) {
+                    // first num, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,2)
+                    numArr.splice(1, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}M`
+
+                } else if (nwNum.length === 8) {
+                    // first 2 nums, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,3)
+                    numArr.splice(2, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}M`
+
+                } else if (nwNum.length === 9) {
+                    // first 3 nums, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,4)
+                    numArr.splice(3, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}M`
+
+                }
+
+            } else if (nwNum.length >= 10 && nwNum.length <= 12) {
+                if (nwNum.length === 10) {
+                    // first num, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,2)
+                    numArr.splice(1, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}B`
+
+                } else if (nwNum.length === 11) {
+                    // first 2 nums, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,3)
+                    numArr.splice(2, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}B`
+
+                } else if (nwNum.length === 12) {
+                    // first 3 nums, then 1 more
+                    let numArr = nwNum.split('')
+                    numArr = numArr.splice(0,4)
+                    numArr.splice(3, 0, ".")
+                    let numStr = numArr.join('')
+                    return `$${numStr}B`
+
+                }
+            }
+        }
     }
 }
 </script>
