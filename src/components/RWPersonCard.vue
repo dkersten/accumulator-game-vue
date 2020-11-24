@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-for="property in properties" :key="property.rank" class="person-card">
+        <div v-for="property in properties" :key="property.rank" class="person-card" :class="property.wealtherThan ? 'more' : 'less'">
             <div class="left">
                 <span class="rank">#{{property.rank}}</span>
                 <h4>{{property.name}}</h4>
             </div>
             <div class="right">
-                <span class="net-worth">{{property.netWorth.toLocaleString()}}</span>
+                <span :class="property.wealtherThan ? 'more' : 'less'" class="net-worth">{{property.netWorth.toLocaleString()}}</span>
             </div>
         </div>
     </div>
@@ -25,52 +25,62 @@ export default {
                 {
                     name: "Jeff Bezos",
                     rank: 1,
-                    netWorth: this.formatNumbers(190900000000)
+                    netWorth: this.formatNumbers(190900000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Bernard Arnault & family",
                     rank: 2,
-                    netWorth: this.formatNumbers(114700000000)
+                    netWorth: this.formatNumbers(114700000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Bill Gates",
                     rank: 3,
-                    netWorth: this.formatNumbers(113600000000)
+                    netWorth: this.formatNumbers(113600000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Mark Zuckerberg",
                     rank: 4,
-                    netWorth: this.formatNumbers(103800000000)
+                    netWorth: this.formatNumbers(103800000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Elon Musk",
                     rank: 5,
-                    netWorth: this.formatNumbers(91700000000)
+                    netWorth: this.formatNumbers(91700000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Mukesh Ambani",
                     rank: 6,
-                    netWorth: this.formatNumbers(77500000000)
+                    netWorth: this.formatNumbers(77500000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Warren Buffett",
                     rank: 7,
-                    netWorth: this.formatNumbers(76600000000)
+                    netWorth: this.formatNumbers(76600000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Larry Ellison",
                     rank: 8,
-                    netWorth: this.formatNumbers(74800000000)
+                    netWorth: this.formatNumbers(74800000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Steve Ballmer",
                     rank: 9,
-                    netWorth: this.formatNumbers(70700000000)
+                    netWorth: this.formatNumbers(70700000000),
+                    wealtherThan: false
                 },
                 {
                     name: "Larry Page",
                     rank: 10,
-                    netWorth: this.formatNumbers(70300000000)
+                    netWorth: this.formatNumbers(70300000000),
+                    wealtherThan: true
                 }
             ]
         }
@@ -146,10 +156,17 @@ export default {
       padding: 1rem;
       margin: 0 auto 1rem;
       max-width: 325px;
-      background: $color-green-dark;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      &.less {
+          background: $color-green-dark-disabled;
+      }
+
+      &.more {
+          background: $color-green-dark;
+      }
 
       span.rank {
         color: $color-green-bright;
@@ -173,6 +190,7 @@ export default {
       span.net-worth {
         font-size: 1.25rem;
         font-weight: 700;
+        text-shadow: 0px 0px 2px rgba(255,255,255,.4);
       }
 
       span.net-worth.less {
