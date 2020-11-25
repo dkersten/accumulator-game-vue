@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="purchase in purchases" :key="purchase.name" class="purchase">
+        <div v-for="purchase in purchases" :key="purchase.name" :class="purchase.canBuy ? 'more' : 'less'" class="purchase">
             <div class="top">
                 <div class="left">
                     <h3>{{purchase.name}}</h3>
@@ -110,9 +110,16 @@ export default {
     @import '../assets/scss/mixins.scss';
 
     .purchase {
-        background: $color-green-dark;
         margin-bottom: 1rem;
         padding: 1rem;
+
+        &.less {
+          background: $color-green-dark-disabled;
+        }
+
+        &.more {
+            background: $color-green-dark;
+        }
 
         .top {
             display: flex;

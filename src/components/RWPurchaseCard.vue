@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="property in properties" :key="property.num" class="rw-purchase-card">
+        <div v-for="property in properties" :key="property.num" :class="property.canBuy ? 'more' : 'less'" class="rw-purchase-card">
             <div class="top">
                 <div class="left">
                     <h3>{{property.title}}</h3>
@@ -132,9 +132,16 @@ export default {
     .rw-purchase-card {
       padding: 1rem;
       margin: 0 auto 1rem;
-      background: $color-green-dark;
       max-width: 325px;
       box-shadow: $box-shadow-sm-subtle;
+
+      &.less {
+        background: $color-green-dark-disabled;
+      }
+
+      &.more {
+        background: $color-green-dark;
+      }
 
       .top {
         display: flex;

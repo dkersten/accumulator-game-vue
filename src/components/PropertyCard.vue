@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="property in properties" :key="property.name" class="property">
+        <div v-for="property in properties" :key="property.name" :class="property.canBuy ? 'more' : 'less'" class="property">
             <div class="left">
                 <h3>{{property.name}}</h3>
                 <span class="cost">
@@ -129,6 +129,14 @@ export default {
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+
+        &.less {
+            background: $color-green-dark-disabled;
+        }
+
+        &.more {
+            background: $color-green-dark;
+        }
 
         .bottom {
             flex-basis: 100%;
