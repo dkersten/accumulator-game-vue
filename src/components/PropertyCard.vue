@@ -109,7 +109,7 @@ export default {
             for (const property of this.properties) {
                 if (property.name === name) {
                     if (this.yourWealth >= property.price) {
-                        console.log("you can buy this")
+                        this.$store.commit('subtractPropertyPrice', property.price)
                     }
                 }
             }

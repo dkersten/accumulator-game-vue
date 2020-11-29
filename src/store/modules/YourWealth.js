@@ -1,6 +1,6 @@
 const state = {
-    wealth: 0,
-    perSecond: 1
+    wealth: 200,
+    perSecond: 0
 }
 
 const getters = {
@@ -18,6 +18,10 @@ const mutations = {
     },
     updatePerSecond (state) {
             state.wealth += state.perSecond
+    },
+    subtractPropertyPrice (state, propertyPrice) {
+        console.log("buying")
+        state.wealth -= propertyPrice
     }
 }
 
