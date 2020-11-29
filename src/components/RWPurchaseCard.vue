@@ -24,7 +24,7 @@
                         class="buy"
                         v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
                         :disabled="property.canBuy === false"
-                        @click="testPurchase()"
+                        @click="purchaseRWProperty(property.title)"
                     >
                         Purchase
                     </button>
@@ -63,7 +63,7 @@ export default {
                         "Home theater and wine cellar on premises"
                     ],
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     num: 2,
@@ -120,6 +120,26 @@ export default {
                 }
             ]
         }
+    },
+
+    computed: {
+      yourWealth() {
+        return this.$store.getters.yourWealth
+      }
+    },
+
+    methods: {
+      purchaseRWProperty(title) {
+        for (const property of this.properties) {
+            if (property.title === title) {
+                if (this.yourWealth >= property.price) {
+                    this.$store.commit('subtractRWPurchasePrice', property.price)
+                } else {
+                    console.log("you have no power here")
+                }
+            }
+        }
+      }
     }
 }
 </script>

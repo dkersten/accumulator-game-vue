@@ -23,7 +23,7 @@
                         class="buy"
                         v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
                         :disabled="property.canBuy === false"
-                        @click="testPurchase(property.name)"
+                        @click="purchase(property.name)"
                     >
                             Purchase
                     </button>
@@ -57,7 +57,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Food Cart",
@@ -65,7 +65,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Food Truck",
@@ -103,9 +103,7 @@ export default {
     },
 
     methods: {
-        testPurchase(name) {
-            // console.log(name)
-
+        purchase(name) {
             for (const property of this.properties) {
                 if (property.name === name) {
                     if (this.yourWealth >= property.price) {
@@ -114,13 +112,12 @@ export default {
                 }
             }
         },
-        checkPurchase: () => {
-            // console.log(yourWealth)
-            // for (const property of this.properties) {
-            //     if (this.$store.state.yourWealth >= property.price) {
-            //         console.log("can buy")
-            //     }
-            // }
+        checkPurchase() {
+            for (const property of this.properties) {
+                if (this.yourWealth >= property.price) {
+                    property.canBuy = true
+                }
+            }
         }
     }
 }

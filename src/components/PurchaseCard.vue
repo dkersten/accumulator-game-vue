@@ -25,7 +25,7 @@
                         class="buy"
                         v-bind:class=" purchase.canBuy ? 'enabled' : 'disabled'"
                         :disabled="purchase.canBuy === false"
-                        @click="testPurchase()"
+                        @click="purchaseUpgrade(purchase.name)"
                     >
                         Purchase
                     </button>
@@ -56,7 +56,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 10,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     name: "Employee Training",
@@ -99,6 +99,26 @@ export default {
                     canBuy: false
                 },
             ]
+        }
+    },
+
+    computed: {
+        yourWealth() {
+            return this.$store.getters.yourWealth
+        }
+    },
+
+    methods: {
+        purchaseUpgrade(name) {
+            for (const purchase of this.purchases) {
+                if (purchase.name === name) {
+                    if (this.yourWealth >= purchase.price) {
+                        this.$store.commit('subtractPurchasePrice', purchase.price)
+                    } else {
+                        console.log("you have no power here")
+                    }
+                }
+            }
         }
     }
 }
