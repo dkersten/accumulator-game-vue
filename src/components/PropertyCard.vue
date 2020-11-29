@@ -40,7 +40,7 @@
 
 <script>
 
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     name: "PropertyCard",
@@ -57,7 +57,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     name: "Food Cart",
@@ -98,8 +98,9 @@ export default {
     computed: {
         yourWealth() {
             return this.$store.getters.yourWealth
-        }
-
+        },
+        
+        ...mapGetters(['vendingMachinesOwned', 'foodCartsOwned', 'foodTrucksOwned', 'restaurantsOwned', 'franchisesOwned'])
     },
 
     methods: {
@@ -107,7 +108,15 @@ export default {
             for (const property of this.properties) {
                 if (property.name === name) {
                     if (this.yourWealth >= property.price) {
+                        // subtract property from cash available
                         this.$store.commit('subtractPropertyPrice', property.price)
+                        
+                        // update total properties owned in state
+                        this.$store.commit('incrementTotalPropertiesOwned')
+
+                        // update DOM of # of properties owned
+                        property.numOwned++
+
                     }
                 }
             }
