@@ -40,8 +40,6 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
-
 export default {
     name: "PropertyCard",
     components: {
@@ -65,7 +63,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     name: "Food Truck",
@@ -98,9 +96,7 @@ export default {
     computed: {
         yourWealth() {
             return this.$store.getters.yourWealth
-        },
-        
-        ...mapGetters(['vendingMachinesOwned', 'foodCartsOwned', 'foodTrucksOwned', 'restaurantsOwned', 'franchisesOwned'])
+        }
     },
 
     methods: {
@@ -108,7 +104,7 @@ export default {
             for (const property of this.properties) {
                 if (property.name === name) {
                     if (this.yourWealth >= property.price) {
-                        // subtract property from cash available
+                        // subtract property price from cash available
                         this.$store.commit('subtractPropertyPrice', property.price)
                         
                         // update total properties owned in state
@@ -117,7 +113,9 @@ export default {
                         // update DOM of # of properties owned
                         property.numOwned++
 
-                    }
+                    } else {
+                    console.log("you have no power here")
+                }
                 }
             }
         },

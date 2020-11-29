@@ -64,7 +64,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 50,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     name: "Social Media Marketing Campaign",
@@ -113,7 +113,14 @@ export default {
             for (const purchase of this.purchases) {
                 if (purchase.name === name) {
                     if (this.yourWealth >= purchase.price) {
+                        // subtract upgrade price from cash available
                         this.$store.commit('subtractPurchasePrice', purchase.price)
+
+                        // update total upgrades owned in state
+                        this.$store.commit('incrementTotalUpgradesOwned')
+
+                        // update DOM of # of upgrades owned
+                        purchase.numOwned++
                     } else {
                         console.log("you have no power here")
                     }

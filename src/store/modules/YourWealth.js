@@ -1,5 +1,5 @@
 const state = {
-    wealth: 68500000,
+    wealth: 168500000,
     perSecond: 0
 }
 

@@ -9,7 +9,7 @@
                     </span>
                 </div>
                 <div class="right">
-                    <span class="quantity">0</span>
+                    <span class="quantity">{{property.numOwned}}</span>
                 </div>
             </div>
             <div class="bottom">
@@ -62,6 +62,7 @@ export default {
                         "Tennis court, golf putting green, and 2 lane bowling alley on premises",
                         "Home theater and wine cellar on premises"
                     ],
+                    numOwned: 0,
                     showMoreInfo: false,
                     canBuy: true
                 },
@@ -75,8 +76,9 @@ export default {
                         "180 degree views of the beach and Pacific Ocean",
                         "4 parking spaces in an attached garage"
                     ],
+                    numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: true
                 },
                 {
                     num: 3,
@@ -89,6 +91,7 @@ export default {
                         "4 Car Attached Garage",
                         "1275 square foot deck facing the ocean"
                     ],
+                    numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false
                 },
@@ -102,6 +105,7 @@ export default {
                         "360 degree views of NYC",
                         "Indoor pool, fitness center, spa and other amenities on premises"
                     ],
+                    numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false
                 },
@@ -115,6 +119,7 @@ export default {
                         "Private swimming pool and hot tub overlooking the water",
                         "Access to community clubhouse and tennis courts"
                     ],
+                    numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false
                 }
@@ -133,7 +138,14 @@ export default {
         for (const property of this.properties) {
             if (property.title === title) {
                 if (this.yourWealth >= property.price) {
-                    this.$store.commit('subtractRWPurchasePrice', property.price)
+                  // subtract RW property price from cash available
+                  this.$store.commit('subtractRWPurchasePrice', property.price)
+
+                  // update total RW properties owned in state
+                  this.$store.commit('incrementTotalRWUpgradesOwned')
+
+                  // update DOM of # of rw properties owned
+                  property.numOwned++
                 } else {
                     console.log("you have no power here")
                 }
