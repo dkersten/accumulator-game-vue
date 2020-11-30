@@ -1,41 +1,48 @@
 <template>
     <div>
-        <div v-for="purchase in purchases" :key="purchase.name" :class="purchase.canBuy ? 'more' : 'less'" class="purchase">
-            <div class="top">
-                <div class="left">
-                    <h3>{{purchase.name}}</h3>
-                    <span class="cost">
-                    Cost: $<span class="price">{{purchase.price.toLocaleString()}}</span>
-                    </span>
+        <div v-if="showUpgrades">
+            <div v-for="purchase in purchases" :key="purchase.name" :class="purchase.canBuy ? 'more' : 'less'" class="purchase">
+                <div class="top">
+                    <div class="left">
+                        <h3>{{purchase.name}}</h3>
+                        <span class="cost">
+                        Cost: $<span class="price">{{purchase.price.toLocaleString()}}</span>
+                        </span>
+                    </div>
+                    <div class="right">
+                        <span class="quantity">
+                            {{purchase.numOwned.toLocaleString()}}
+                        </span>
+                    </div>
                 </div>
-                <div class="right">
-                    <span class="quantity">
-                        {{purchase.numOwned.toLocaleString()}}
-                    </span>
+                <div class="bottom">
+                <div class="button-container">
+                        <button 
+                            v-on:click="purchase.showMoreInfo = !purchase.showMoreInfo"
+                            class="more-info">
+                                {{purchase.showMoreInfo ? 'Less Info' : 'More Info'}}
+                        </button>
+                        <button
+                            class="buy"
+                            v-bind:class=" purchase.canBuy ? 'enabled' : 'disabled'"
+                            :disabled="purchase.canBuy === false"
+                            @click="purchaseUpgrade(purchase.name)"
+                        >
+                            Purchase
+                        </button>
+                </div>
+                <div v-show="purchase.showMoreInfo" class="more-info-container">
+                    <ul>
+                    <li>Increase dollars per second by <span class="dps-rate-food-cart">{{purchase.scorePerSecond}}</span></li>
+                    </ul>
+                </div>
                 </div>
             </div>
-            <div class="bottom">
-              <div class="button-container">
-                    <button 
-                        v-on:click="purchase.showMoreInfo = !purchase.showMoreInfo"
-                        class="more-info">
-                            {{purchase.showMoreInfo ? 'Less Info' : 'More Info'}}
-                    </button>
-                    <button
-                        class="buy"
-                        v-bind:class=" purchase.canBuy ? 'enabled' : 'disabled'"
-                        :disabled="purchase.canBuy === false"
-                        @click="purchaseUpgrade(purchase.name)"
-                    >
-                        Purchase
-                    </button>
-              </div>
-              <div v-show="purchase.showMoreInfo" class="more-info-container">
-                <ul>
-                  <li>Increase dollars per second by <span class="dps-rate-food-cart">{{purchase.scorePerSecond}}</span></li>
-                </ul>
-              </div>
-            </div>
+        </div>
+        <div v-else>
+            <p class="upgrade-notice">
+                Make a property purchase to unlock all upgrades to your business. Purchasing upgrades will increase your money made automatically per second.
+            </p>
         </div>
     </div>
 </template>
@@ -98,7 +105,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false
                 },
-            ]
+            ],
+            showUpgrades: true
         }
     },
 
@@ -135,6 +143,15 @@ export default {
 
     @import '../assets/scss/variables.scss';
     @import '../assets/scss/mixins.scss';
+
+    p.upgrade-notice {
+        margin: auto;
+        color: $color-red;
+        max-width: 450px;
+        text-align: center;
+        line-height: 1.5;
+        font-size: 1.15rem;
+    }
 
     .purchase {
         margin-bottom: 1rem;
