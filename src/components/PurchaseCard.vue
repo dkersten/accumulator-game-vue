@@ -63,7 +63,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 10,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Employee Training",
@@ -71,7 +71,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 50,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Social Media Marketing Campaign",
@@ -141,6 +141,16 @@ export default {
     },
 
     watch: {
+        yourWealth() {
+            for (const purchase of this.purchases) {
+                if (this.yourWealth >= purchase.price) {
+                    purchase.canBuy = true
+                } else {
+                    purchase.canBuy = false
+                }
+            }
+        },
+        
         totalProperties() {
             if (this.totalProperties >= 1) {
                 this.showUpgrades = true

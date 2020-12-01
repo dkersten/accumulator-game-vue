@@ -64,7 +64,7 @@ export default {
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     num: 2,
@@ -78,7 +78,7 @@ export default {
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     num: 3,
@@ -150,6 +150,18 @@ export default {
                     console.log("you have no power here")
                 }
             }
+        }
+      }
+    },
+
+    watch: {
+      yourWealth() {
+        for (const property of this.properties) {
+          if (this.yourWealth >= property.price) {
+              property.canBuy = true
+          } else {
+              property.canBuy = false
+          }
         }
       }
     }

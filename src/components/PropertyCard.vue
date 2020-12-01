@@ -55,7 +55,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Food Cart",
@@ -63,7 +63,7 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
-                    canBuy: true
+                    canBuy: false
                 },
                 {
                     name: "Food Truck",
@@ -118,11 +118,16 @@ export default {
                 }
                 }
             }
-        },
-        checkPurchase() {
+        }
+    },
+
+    watch: {
+        yourWealth() {
             for (const property of this.properties) {
                 if (this.yourWealth >= property.price) {
                     property.canBuy = true
+                } else {
+                    property.canBuy = false
                 }
             }
         }
