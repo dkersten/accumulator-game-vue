@@ -106,13 +106,16 @@ export default {
                     canBuy: false
                 },
             ],
-            showUpgrades: true
+            showUpgrades: false
         }
     },
 
     computed: {
         yourWealth() {
             return this.$store.getters.yourWealth
+        },
+        totalProperties() {
+            return this.$store.getters.totalPropertiesOwned
         }
     },
 
@@ -133,6 +136,14 @@ export default {
                         console.log("you have no power here")
                     }
                 }
+            }
+        }
+    },
+
+    watch: {
+        totalProperties() {
+            if (this.totalProperties >= 1) {
+                this.showUpgrades = true
             }
         }
     }

@@ -20,15 +20,12 @@ const mutations = {
             state.wealth += state.perSecond
     },
     subtractPropertyPrice (state, propertyPrice) {
-        console.log("buying property")
         state.wealth -= propertyPrice
     },
     subtractPurchasePrice (state, propertyPrice) {
-        console.log("buying upgrade")
         state.wealth -= propertyPrice
     },
     subtractRWPurchasePrice (state, rwPurchasePrice) {
-        console.log("buying RW property")
         state.wealth -= rwPurchasePrice
     }
 }
