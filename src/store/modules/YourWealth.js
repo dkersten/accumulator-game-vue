@@ -1,5 +1,5 @@
 const state = {
-    wealth: 67499997,
+    wealth: 2198,
     perSecond: 0
 }
 
@@ -27,6 +27,9 @@ const mutations = {
     },
     subtractRWPurchasePrice (state, rwPurchasePrice) {
         state.wealth -= rwPurchasePrice
+    },
+    updatePerSecondScoreWithPurchase (state, points) {
+        state.perSecond += points
     }
 }
 

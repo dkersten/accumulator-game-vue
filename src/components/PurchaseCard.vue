@@ -130,6 +130,9 @@ export default {
                         // update total upgrades owned in state
                         this.$store.commit('incrementTotalUpgradesOwned')
 
+                        // update score per second to state
+                        this.$store.commit('updatePerSecondScoreWithPurchase', purchase.scorePerSecond)
+
                         // update DOM of # of upgrades owned
                         purchase.numOwned++
                     } else {

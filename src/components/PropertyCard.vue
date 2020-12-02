@@ -51,7 +51,7 @@ export default {
             properties: [
                 {
                     name: "Vending Machine",
-                    price: 10,
+                    price: 200,
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
@@ -59,7 +59,7 @@ export default {
                 },
                 {
                     name: "Food Cart",
-                    price: 100,
+                    price: 50000,
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
@@ -67,7 +67,7 @@ export default {
                 },
                 {
                     name: "Food Truck",
-                    price: 1000,
+                    price: 100000,
                     numOwned: 0,
                     scorePerSecond: 75,
                     showMoreInfo: false,
@@ -75,7 +75,7 @@ export default {
                 },
                 {
                     name: "Restaurant",
-                    price: 10000,
+                    price: 2000000,
                     numOwned: 0,
                     scorePerSecond: 400,
                     showMoreInfo: false,
@@ -83,7 +83,7 @@ export default {
                 },
                 {
                     name: "Franchise of Restaurants",
-                    price: 10000,
+                    price: 50000000,
                     numOwned: 0,
                     scorePerSecond: 1000,
                     showMoreInfo: false,
@@ -109,6 +109,9 @@ export default {
                         
                         // update total properties owned in state
                         this.$store.commit('incrementTotalPropertiesOwned')
+
+                        // update score per second to state
+                        this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
 
                         // update DOM of # of properties owned
                         property.numOwned++
