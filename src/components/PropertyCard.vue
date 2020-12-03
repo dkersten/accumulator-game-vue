@@ -89,7 +89,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false
                 }
-            ]
+            ],
+            priceIncrease: 1.25
         }
     },
 
@@ -115,6 +116,10 @@ export default {
 
                         // update DOM of # of properties owned
                         property.numOwned++
+
+                        // increase price of purchased property
+                        const newPrice = property.price * this.priceIncrease
+                        property.price = Math.round(newPrice)
 
                     } else {
                     console.log("you have no power here")

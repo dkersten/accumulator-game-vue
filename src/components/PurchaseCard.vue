@@ -106,7 +106,8 @@ export default {
                     canBuy: false
                 },
             ],
-            showUpgrades: false
+            showUpgrades: false,
+            priceIncrease: 1.15
         }
     },
 
@@ -135,6 +136,10 @@ export default {
 
                         // update DOM of # of upgrades owned
                         purchase.numOwned++
+
+                        // increase price of purchased upgrade
+                        const newPrice = purchase.price * this.priceIncrease
+                        purchase.price = Math.round(newPrice)
                     } else {
                         console.log("you have no power here")
                     }
