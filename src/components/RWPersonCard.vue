@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div v-for="property in properties" :key="property.rank" class="person-card" :class="property.wealtherThan ? 'more' : 'less'">
+        <div v-for="person in people" :key="person.rank" class="person-card" :class="person.wealtherThan ? 'more' : 'less'">
             <div class="left">
-                <span class="rank">#{{property.rank}}</span>
-                <h4>{{property.name}}</h4>
+                <span class="rank">#{{person.rank}}</span>
+                <h4>{{person.name}}</h4>
             </div>
             <div class="right">
-                <span :class="property.wealtherThan ? 'more' : 'less'" class="net-worth">{{property.netWorth.toLocaleString()}}</span>
+                <span :class="person.wealtherThan ? 'more' : 'less'" class="net-worth">{{person.netWorthFormatted}}</span>
             </div>
         </div>
     </div>
@@ -21,68 +21,84 @@ export default {
 
     data() {
         return {
-            properties: [
+            people: [
                 {
                     name: "Jeff Bezos",
                     rank: 1,
-                    netWorth: this.formatNumbers(190900000000),
+                    netWorth: 190900000000,
+                    netWorthFormatted: this.formatNumbers(190900000000),
                     wealtherThan: false
                 },
                 {
                     name: "Bernard Arnault & family",
                     rank: 2,
-                    netWorth: this.formatNumbers(114700000000),
+                    netWorth: 114700000000,
+                    netWorthFormatted: this.formatNumbers(114700000000),
                     wealtherThan: false
                 },
                 {
                     name: "Bill Gates",
                     rank: 3,
-                    netWorth: this.formatNumbers(113600000000),
+                    netWorth: 113600000000,
+                    netWorthFormatted: this.formatNumbers(113600000000),
                     wealtherThan: false
                 },
                 {
                     name: "Mark Zuckerberg",
                     rank: 4,
-                    netWorth: this.formatNumbers(103800000000),
+                    netWorth: 103800000000,
+                    netWorthFormatted: this.formatNumbers(103800000000),
                     wealtherThan: false
                 },
                 {
                     name: "Elon Musk",
                     rank: 5,
-                    netWorth: this.formatNumbers(91700000000),
+                    netWorth: 91700000000,
+                    netWorthFormatted: this.formatNumbers(91700000000),
                     wealtherThan: false
                 },
                 {
                     name: "Mukesh Ambani",
                     rank: 6,
-                    netWorth: this.formatNumbers(77500000000),
+                    netWorth: 77500000000,
+                    netWorthFormatted: this.formatNumbers(77500000000),
                     wealtherThan: false
                 },
                 {
                     name: "Warren Buffett",
                     rank: 7,
-                    netWorth: this.formatNumbers(76600000000),
+                    netWorth: 76600000000,
+                    netWorthFormatted: this.formatNumbers(76600000000),
                     wealtherThan: false
                 },
                 {
                     name: "Larry Ellison",
                     rank: 8,
-                    netWorth: this.formatNumbers(74800000000),
+                    netWorth: 74800000000,
+                    netWorthFormatted: this.formatNumbers(74800000000),
                     wealtherThan: false
                 },
                 {
                     name: "Steve Ballmer",
                     rank: 9,
-                    netWorth: this.formatNumbers(70700000000),
+                    netWorth: 70700000000,
+                    netWorthFormatted: this.formatNumbers(70700000000),
                     wealtherThan: false
                 },
                 {
                     name: "Larry Page",
                     rank: 10,
-                    netWorth: this.formatNumbers(70300000000),
-                    wealtherThan: true
+                    netWorth: 70300000000,
+                    netWorthFormatted: this.formatNumbers(70300000000),
+                    wealtherThan: false
                 }
             ]
+        }
+    },
+
+    computed: {
+        yourWealth() {
+            return this.$store.getters.yourWealth
         }
     },
 
@@ -141,6 +157,18 @@ export default {
                     let numStr = numArr.join('')
                     return `$${numStr}B`
 
+                }
+            }
+        }
+    },
+
+    watch: {
+        yourWealth() {
+            for (const person of this.people) {
+                if (this.yourWealth >= person.netWorth) {
+                    person.wealtherThan = true
+                } else {
+                    person.wealtherThan = false
                 }
             }
         }
