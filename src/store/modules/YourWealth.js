@@ -1,11 +1,13 @@
 const state = {
-    wealth: 74800000000,
-    perSecond: 0
+    wealth: 200,
+    perSecond: 0,
+    netWorth: 200
 }
 
 const getters = {
     yourWealth: (state) => state.wealth,
-    perSecond: (state) => state.perSecond
+    perSecond: (state) => state.perSecond,
+    netWorth: (state) => state.netWorth,
 }
 
 const actions = {
@@ -13,10 +15,11 @@ const actions = {
 }
 
 const mutations = {
+    // wealth mutations
     incrementWealthOnClick (state) {
         state.wealth++
     },
-    updatePerSecond (state) {
+    updatePerSecondWealth (state) {
             state.wealth += state.perSecond
     },
     subtractPropertyPrice (state, propertyPrice) {
@@ -28,8 +31,18 @@ const mutations = {
     subtractRWPurchasePrice (state, rwPurchasePrice) {
         state.wealth -= rwPurchasePrice
     },
+
+    // per second score mutations
     updatePerSecondScoreWithPurchase (state, points) {
         state.perSecond += points
+    },
+
+    // Net worth mutations
+    incrementNetWorthOnClick (state) {
+        state.netWorth++
+    },
+    updatePerSecondWNetWorth (state) {
+        state.netWorth += state.perSecond
     }
 }
 

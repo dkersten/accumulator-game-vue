@@ -1,8 +1,8 @@
 <template>
     <div class="inner-stats-container">
-        <p>Your Wealth: $<span class="wealth-count-num">{{yourWealth.toLocaleString()}}</span></p>
+        <p class="netWorth">Your Wealth: $<span class="wealth-count-num">{{yourWealth.toLocaleString()}}</span></p>
         <p>Per Second: $<span class="per-second-num">{{perSecond}}</span></p>
-        <p>Total Net Worth: $<span class="net-worth-num">0</span></p>
+        <p>Total Net Worth: $<span class="net-worth-num">{{netWorth.toLocaleString()}}</span></p>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 
     },
     computed: {
-        ...mapGetters(['yourWealth', 'perSecond'])
+        ...mapGetters(['yourWealth', 'perSecond', 'netWorth'])
     }
 }
 </script>
@@ -46,6 +46,11 @@ export default {
                     color: $color-green-bright;
                 }
             }
+        }
+
+        p.netWorth, p.netWorth span {
+            font-size: $font-paragraph-lg;
+            font-weight: 700;
         }
     }
 

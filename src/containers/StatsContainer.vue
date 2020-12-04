@@ -19,12 +19,14 @@ export default {
     methods: {
         increment() {
             this.$store.commit('incrementWealthOnClick')
+            this.$store.commit('incrementNetWorthOnClick')
         }
     },
     mounted: function () {
         this.$nextTick(function () {
             window.setInterval(() => {
-                this.$store.commit('updatePerSecond')
+                this.$store.commit('updatePerSecondWealth')
+                this.$store.commit('updatePerSecondWNetWorth')
             }, 1000)
         })
     }
