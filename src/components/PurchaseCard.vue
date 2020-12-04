@@ -120,6 +120,10 @@ export default {
         }
     },
 
+    beforeMount() {
+        this.canPurchase()
+    },
+
     methods: {
         purchaseUpgrade(name) {
             for (const purchase of this.purchases) {
@@ -145,11 +149,8 @@ export default {
                     }
                 }
             }
-        }
-    },
-
-    watch: {
-        yourWealth() {
+        },
+        canPurchase() {
             for (const purchase of this.purchases) {
                 if (this.yourWealth >= purchase.price) {
                     purchase.canBuy = true
@@ -157,6 +158,12 @@ export default {
                     purchase.canBuy = false
                 }
             }
+        }
+    },
+
+    watch: {
+        yourWealth() {
+            this.canPurchase()
         },
         
         totalProperties() {

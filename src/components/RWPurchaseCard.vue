@@ -133,6 +133,10 @@ export default {
       }
     },
 
+    beforeMount() {
+        this.canPurchase()
+    },
+
     methods: {
       purchaseRWProperty(title) {
         for (const property of this.properties) {
@@ -151,11 +155,8 @@ export default {
                 }
             }
         }
-      }
-    },
-
-    watch: {
-      yourWealth() {
+      },
+      canPurchase() {
         for (const property of this.properties) {
           if (this.yourWealth >= property.price) {
               property.canBuy = true
@@ -163,6 +164,12 @@ export default {
               property.canBuy = false
           }
         }
+      }
+    },
+
+    watch: {
+      yourWealth() {
+        this.canPurchase()
       }
     }
 }

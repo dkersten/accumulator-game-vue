@@ -102,6 +102,10 @@ export default {
         }
     },
 
+    beforeMount() {
+        this.canPurchase()
+    },
+
     methods: {
         formatNumbers: (num) => {
             const nwNum = num.toString()
@@ -159,11 +163,8 @@ export default {
 
                 }
             }
-        }
-    },
-
-    watch: {
-        yourWealth() {
+        },
+        canPurchase() {
             for (const person of this.people) {
                 if (this.yourWealth >= person.netWorth) {
                     person.wealtherThan = true
@@ -171,6 +172,12 @@ export default {
                     person.wealtherThan = false
                 }
             }
+        }
+    },
+
+    watch: {
+        yourWealth() {
+            this.canPurchase()
         }
     }
 }
