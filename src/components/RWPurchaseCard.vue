@@ -122,6 +122,91 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false
+                },
+                {
+                    num: 6,
+                    title: "Chevrolet Corvette Stingray",
+                    price: 79940,
+                    features: [
+                        "3LT, Convertible",
+                        "6.2L V8 DI engine",
+                        "8-speed dual clutch transmission"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 7,
+                    title: "Luxury Yacht",
+                    price: 2499000,
+                    features: [
+                        "118 foot Luxury motor yacht",
+                        "Features a main salon, bar, and entertainment center",
+                        "Accommodations for up to 10 guests",
+                        "Five staterooms complete with en-suite bath with shower"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 8,
+                    title: "Super Yacht",
+                    price: 180869339,
+                    features: [
+                        "300 foot super yacht",
+                        "Features a bar, jacuzzi, gym, sauna, and more",
+                        "Space for up to 22 guests and 31 crew members",
+                        "11 luxury suites"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 9,
+                    title: "Private Jet (Gulfstream G550)",
+                    price: 15250000,
+                    features: [
+                        "Room for up to 18 passengers",
+                        "Multiple Cabin Configuration Options",
+                        "Equipped with a microwave, convection oven, cooler cabinet, and coffee maker"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 10,
+                    title: "Buffalo Sabres ⚔️",
+                    price: 400000000,
+                    features: [
+                        "No Stanley Cups 😞",
+                        "Implement a competent hockey ops department",
+                        "Actually bring the fans enjoyment",
+                        "Win a Cup and become a legend in Buffalo",
+                        "Core in place: Eichel, Dahlin, Cozens, one lightly used Okposo"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 11,
+                    title: "Buffalo Bills",
+                    price: 2050000000,
+                    features: [
+                        "No Super Bowls 😞",
+                        "Finally bring success to the long suffering fans",
+                        "Copetent front office and coaching staff",
+                        "Perfect if you like hard counts and running down the clock starting immediately after halftime",
+                        "Win a SB and become a legend in Buffalo",
+                        "Core in place: Allen, White, Diggs, one lightly used Okposo"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
                 }
             ]
         }
