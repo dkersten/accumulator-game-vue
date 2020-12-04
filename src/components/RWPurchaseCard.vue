@@ -199,10 +199,58 @@ export default {
                     features: [
                         "No Super Bowls 😞",
                         "Finally bring success to the long suffering fans",
-                        "Copetent front office and coaching staff",
+                        "Competent front office and coaching staff",
                         "Perfect if you like hard counts and running down the clock starting immediately after halftime",
                         "Win a SB and become a legend in Buffalo",
-                        "Core in place: Allen, White, Diggs, one lightly used Okposo"
+                        "Core in place: Allen, White, Diggs, and Edmonds",
+                        "Warning: be prepared to build a new stadium"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 12,
+                    title: "Liverpool FC 🔴",
+                    price: 2183000000,
+                    features: [
+                        "Most successful club in England",
+                        "19 League titles, 6 European Cups, 7 FA Cups, 3 UEFA Cups, 4 UEFA Super Cups, 1 FIFA Club World Cup, 8 League Cups, 15 Charity/Community Shields",
+                        "Newly upgraded stadium, the historic Anfield",
+                        "Brand new training ground (Kirkby)",
+                        "Personally fund Mbappe 2020/21 and Haaland 2021/2022",
+                        "Comes with the best manager in the world",
+                        "Warning: keep Michael Edwards at the club or watch your investment plummet",
+                        "Warning: annoying neighbors across Stanley Park"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 13,
+                    title: "Private Island, Exuma, Bahamas",
+                    price: 8600000,
+                    features: [
+                        "30 acre private island ",
+                        "Enjoy a white sand beach, lush native vegetation, and varied elevations",
+                        "Situated 700 feet from popular Staniel Cay",
+                        "Close to many popular tourist attractions",
+                        "Easily accessible via Staniel Cay's airstrip or 18 slip marina"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false
+                },
+                {
+                    num: 14,
+                    title: "Private Island, Nelson, New Zealand",
+                    price: 11313017,
+                    features: [
+                        "1287 acre private island ",
+                        "9 bedroom, 3 bath residence",
+                        "Features rolling paddocks, native bush, sea, cliffs, and beaches",
+                        "Year round temperate climate"
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
