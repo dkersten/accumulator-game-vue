@@ -43,11 +43,10 @@ export default {
     @media only screen and (min-width: 900px) {
         .inner-container {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-wrap: wrap;
 
             > * {
-                flex-basis: 45%;
+                flex-basis: 100%;
             }
         }
     }

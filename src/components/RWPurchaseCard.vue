@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="inner-rwCard-container">
         <div v-for="property in properties" :key="property.num" :class="property.canBuy ? 'more' : 'less'" class="rw-purchase-card">
             <div class="top">
                 <div class="left">
@@ -322,10 +322,16 @@ export default {
     @import '../assets/scss/variables.scss';
     @import '../assets/scss/mixins.scss';
 
+    .inner-rwCard-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .rw-purchase-card {
       padding: 1rem;
-      margin: 0 auto 1rem;
-      max-width: 325px;
+      margin: 0 1rem 1rem;
+      width: 325px;
       box-shadow: $box-shadow-sm-subtle;
 
       &.less {

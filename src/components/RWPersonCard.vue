@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="inner-rwPerson-card-container">
         <div v-for="person in people" :key="person.rank" class="person-card" :class="person.wealtherThan ? 'more' : 'less'">
             <div class="left">
                 <span class="rank">#{{person.rank}}</span>
@@ -187,10 +187,16 @@ export default {
 
     @import '../assets/scss/variables.scss';
 
+    .inner-rwPerson-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .person-card {
       padding: 1rem;
       margin: 0 auto 1rem;
-      max-width: 325px;
+      width: 325px;
       display: flex;
       justify-content: space-between;
       align-items: center;

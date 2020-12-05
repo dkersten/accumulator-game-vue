@@ -31,12 +31,6 @@ export default {
             @include heading-styling-main;
             font-size: $font-paragraph-lg;
         }
-
-        .rw-purchases-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
     }
 
 </style>
