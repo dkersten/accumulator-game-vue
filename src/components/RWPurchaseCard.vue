@@ -126,7 +126,7 @@ export default {
                 {
                     num: 6,
                     title: "Chevrolet Corvette Stingray",
-                    price: 79940,
+                    price: 10,
                     features: [
                         "3LT, Convertible",
                         "6.2L V8 DI engine",
@@ -288,7 +288,9 @@ export default {
                   this.$store.commit('incrementTotalRWUpgradesOwned')
 
                   // update per scond score in state
-                  this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
+                  if (property.scorePerSecond) {
+                    this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
+                  }
 
                   // update DOM of # of rw properties owned
                   property.numOwned++
@@ -394,19 +396,6 @@ export default {
 
         button.buy {
           @include buttonDefaultStyling;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-
-        button.buy.enabled {
-          background: $color-green-bright;
-        }
-
-        button.buy.disabled {
-          background: $color-red;
-          cursor: not-allowed;
         }
 
         .more-info-container {

@@ -230,19 +230,6 @@ export default {
 
             button.buy {
                 @include buttonDefaultStyling;
-
-                &:hover {
-                    cursor: pointer;
-                }
-
-                &.enabled {
-                    background: $color-green-bright;
-                }
-
-                &.disabled {
-                    background: $color-red;
-                    cursor: not-allowed;
-                }
             }
 
             .more-info-container {

@@ -74,7 +74,7 @@
 
         button {
             @include buttonDefaultStyling;
-            background: $color-red;
+            background: $color-red-user-action;
         }
     }
 </style>

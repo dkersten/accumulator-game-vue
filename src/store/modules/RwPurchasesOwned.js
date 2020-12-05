@@ -13,7 +13,6 @@ const actions = {
 const mutations = {
     incrementTotalRWUpgradesOwned(state) {
         state.totalRWUpgradesOwned++
-        console.log(state.totalRWUpgradesOwned)
     }
 }
 
