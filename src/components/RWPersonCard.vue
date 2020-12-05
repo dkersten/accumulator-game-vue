@@ -195,7 +195,7 @@ export default {
 
     .person-card {
       padding: 1rem;
-      margin: 0 auto 1rem;
+      margin: 0 1rem 1rem;
       width: 325px;
       display: flex;
       justify-content: space-between;

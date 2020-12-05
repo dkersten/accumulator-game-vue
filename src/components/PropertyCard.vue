@@ -194,10 +194,7 @@ export default {
             }
 
             button.buy {
-                color: $color-white;
-                text-shadow: 0 0 5px $color-grey-dark;
-                border: none;
-                padding: 0.35rem 0.75rem;
+                @include buttonDefaultStyling;
 
                 &:hover {
                     cursor: pointer;
