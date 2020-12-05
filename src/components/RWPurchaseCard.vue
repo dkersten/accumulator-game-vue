@@ -126,7 +126,7 @@ export default {
                 {
                     num: 6,
                     title: "Chevrolet Corvette Stingray",
-                    price: 10,
+                    price: 79940,
                     features: [
                         "3LT, Convertible",
                         "6.2L V8 DI engine",

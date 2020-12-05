@@ -7,6 +7,7 @@
             </span>
         </h3>
         <div class="rw-purchases-container">
+            <RWPurchasesSorting></RWPurchasesSorting>
             <RWPurchaseCard></RWPurchaseCard>
             <modal-direction v-model="modalOpen"></modal-direction>
         </div>
@@ -17,12 +18,14 @@
 
 import RWPurchaseCard from '../components/RWPurchaseCard'
 import ModalDirection from '../components/Modal'
+import RWPurchasesSorting from '../components/RWPurchasesSorting'
 
 export default {
     name: 'RWPurchases',
     components: {
         RWPurchaseCard,
-        ModalDirection
+        ModalDirection,
+        RWPurchasesSorting
     },
 
     data() {
