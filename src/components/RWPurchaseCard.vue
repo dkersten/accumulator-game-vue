@@ -182,6 +182,7 @@ export default {
                     title: "Buffalo Sabres ⚔️",
                     price: 400000000,
                     features: [
+                      "Increase dollars per second by 5000",
                         "No Stanley Cups 😞",
                         "Implement a competent hockey ops department",
                         "Actually bring the fans enjoyment",
@@ -190,13 +191,15 @@ export default {
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    perSecond: 5000
                 },
                 {
                     num: 11,
                     title: "Buffalo Bills",
                     price: 2050000000,
                     features: [
+                        "Increase dollars per second by 10000",
                         "No Super Bowls 😞",
                         "Finally bring success to the long suffering fans",
                         "Competent front office and coaching staff",
@@ -207,13 +210,15 @@ export default {
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    scorePerSecond: 10000
                 },
                 {
                     num: 12,
                     title: "Liverpool FC 🔴",
                     price: 2183000000,
                     features: [
+                        "Increase dollars per second by 12000",
                         "Most successful club in England",
                         "19 League titles, 6 European Cups, 7 FA Cups, 3 UEFA Cups, 4 UEFA Super Cups, 1 FIFA Club World Cup, 8 League Cups, 15 Charity/Community Shields",
                         "Newly upgraded stadium, the historic Anfield",
@@ -225,7 +230,8 @@ export default {
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    scorePerSecond: 12000
                 },
                 {
                     num: 13,
@@ -280,6 +286,9 @@ export default {
 
                   // update total RW properties owned in state
                   this.$store.commit('incrementTotalRWUpgradesOwned')
+
+                  // update per scond score in state
+                  this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
 
                   // update DOM of # of rw properties owned
                   property.numOwned++

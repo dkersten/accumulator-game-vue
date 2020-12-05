@@ -1,7 +1,7 @@
 <template>
     <div class="inner-stats-container">
         <p class="netWorth">Your Wealth: $<span class="wealth-count-num">{{yourWealth.toLocaleString()}}</span></p>
-        <p>Per Second: $<span class="per-second-num">{{perSecond}}</span></p>
+        <p>Per Second: $<span class="per-second-num">{{perSecond.toLocaleString()}}</span></p>
         <p>Total Net Worth: $<span class="net-worth-num">{{netWorth.toLocaleString()}}</span></p>
     </div>
 </template>
