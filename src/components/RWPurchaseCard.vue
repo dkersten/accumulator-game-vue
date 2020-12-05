@@ -1,4 +1,17 @@
 <template>
+  <div>
+    <div class="filtering-container">
+      <div class="inner-filtering-container">
+        <div class="sorting-price">
+          <span>Sort by Price</span>
+          <select @change="sortPriceChange($event)" name="byPrice" id="byPrice">
+            <option value=""></option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div class="inner-rwCard-container">
         <div v-for="property in properties" :key="property.num" :class="property.canBuy ? 'more' : 'less'" class="rw-purchase-card">
             <div class="top">
@@ -39,6 +52,7 @@
             </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -307,6 +321,15 @@ export default {
           } else {
               property.canBuy = false
           }
+        }
+      },
+
+      // sorting and filtering
+      sortPriceChange(event) {
+        if (event.target.value === "lowToHigh") {
+          this.properties.sort((a,b) => a.price > b.price ? 1 : -1)
+        } else if (event.target.value === "highToLow") {
+          this.properties.sort((a, b) => a.price < b.price ? 1 : -1)
         }
       }
     },
