@@ -19,6 +19,14 @@
                         <option value="misc">Misc</option>
                     </select>
                 </div>
+                <div class="filter-by-utility">
+                    <span>Filter by utility </span>
+                    <select @change="filterByUtility($event)" name="byType" id="byType">
+                        <option value="all">All</option>
+                        <option value="investment">Return on investment</option>
+                        <option value="fun">No ROI, just for fun</option>
+                    </select>
+                </div>
             </div>
         </div>
   </div>
@@ -40,6 +48,10 @@ export default {
 
         filterByType(event) {
             this.$store.commit('filterByType', event.target.value)
+        },
+
+        filterByUtility(event) {
+            console.log(event.target.value)
         }
     }
 }

@@ -320,6 +320,10 @@ export default {
         } else {
           return this.properties.filter(property => property.type === this.filterByType)
         }
+      },
+
+      filterByUtility() {
+        return this.$store.getters.filterByUtility
       }
     },
 
