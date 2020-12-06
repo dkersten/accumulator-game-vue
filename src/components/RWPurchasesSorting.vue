@@ -11,7 +11,7 @@
                 </div>
                 <div class="filter-by-type">
                     <span>Filter by Type</span>
-                    <select name="byType" id="byType">
+                    <select @change="filterByType($event)" name="byType" id="byType">
                         <option value="all">All Categories</option>
                         <option value="real estate">Real Estate</option>
                         <option value="sports">Sports Teams</option>
@@ -36,6 +36,10 @@ export default {
             } else {
                 this.$store.commit('togglePriceSorting', false)
             }
+        },
+
+        filterByType(event) {
+            this.$store.commit('filterByType', event.target.value)
         }
     }
 }
@@ -60,7 +64,7 @@ export default {
 
         span {
             display: inline-block;
-            margin-right: 1rem;
+            margin-right: .5rem;
         }
 
     }
