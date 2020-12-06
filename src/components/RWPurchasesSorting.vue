@@ -3,11 +3,21 @@
         <div class="filtering-container">
             <div class="inner-filtering-container">
                 <div class="sorting-price">
-                <span>Sort by Price</span>
-                <select @change="sortPriceChange($event)" name="byPrice" id="byPrice">
-                    <option value="lowToHigh">Low to High</option>
-                    <option value="highToLow">High to Low</option>
-                </select>
+                    <span>Sort by Price</span>
+                    <select @change="sortPriceChange($event)" name="byPrice" id="byPrice">
+                        <option value="lowToHigh">Low to High</option>
+                        <option value="highToLow">High to Low</option>
+                    </select>
+                </div>
+                <div class="filter-by-type">
+                    <span>Filter by Type</span>
+                    <select name="byType" id="byType">
+                        <option value="all">All Categories</option>
+                        <option value="real estate">Real Estate</option>
+                        <option value="sports">Sports Teams</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="misc">Misc</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -39,11 +49,19 @@ export default {
       margin: 0 auto $vertical-spacing-md;
       max-width: calc((325px * 3) + 10rem);
 
-      .sorting-price {
-        span {
-          display: inline-block;
-          margin-right: 1rem;
-        }
+      .inner-filtering-container {
+          display: flex;
+          flex-wrap: wrap;
+
+          > div {
+              margin-right: 2rem;
+          }
       }
+
+        span {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
     }
 </style>
