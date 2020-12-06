@@ -1,17 +1,5 @@
 <template>
   <div>
-    <div class="filtering-container">
-      <div class="inner-filtering-container">
-        <div class="sorting-price">
-          <span>Sort by Price</span>
-          <select @change="sortPriceChange($event)" name="byPrice" id="byPrice">
-            <option value=""></option>
-            <option value="lowToHigh">Low to High</option>
-            <option value="highToLow">High to Low</option>
-          </select>
-        </div>
-      </div>
-    </div>
     <div class="inner-rwCard-container">
         <div v-for="property in properties" :key="property.num" :class="property.canBuy ? 'more' : 'less'" class="rw-purchase-card">
             <div class="top">
@@ -283,11 +271,15 @@ export default {
     computed: {
       yourWealth() {
         return this.$store.getters.yourWealth
+      },
+      priceSorting() {
+        return this.$store.getters.priceSorting
       }
     },
 
     beforeMount() {
         this.canPurchase()
+        this.sortByPrice()
     },
 
     methods: {
@@ -325,10 +317,10 @@ export default {
       },
 
       // sorting and filtering
-      sortPriceChange(event) {
-        if (event.target.value === "lowToHigh") {
+      sortByPrice() {
+        if (this.$store.getters.priceSorting) {
           this.properties.sort((a,b) => a.price > b.price ? 1 : -1)
-        } else if (event.target.value === "highToLow") {
+        } else {
           this.properties.sort((a, b) => a.price < b.price ? 1 : -1)
         }
       }
@@ -337,6 +329,9 @@ export default {
     watch: {
       yourWealth() {
         this.canPurchase()
+      },
+      priceSorting() {
+        this.sortByPrice()
       }
     }
 }

@@ -4,6 +4,7 @@ import YourWealth from './modules/YourWealth'
 import PropertiesOwned from './modules/PropertiesOwned'
 import UpgradesOwned from './modules/UpgradesOwned'
 import RwPurchasesOwned from './modules/RwPurchasesOwned'
+import SortingandFiltering from './modules/SortingandFiltering'
 
 // Load Vuex
 Vue.use(Vuex)
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         YourWealth,
         PropertiesOwned,
         UpgradesOwned,
-        RwPurchasesOwned
+        RwPurchasesOwned,
+        SortingandFiltering
     }
 })
