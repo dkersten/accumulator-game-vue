@@ -73,7 +73,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 2,
@@ -89,7 +90,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 3,
@@ -106,7 +108,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 4,
@@ -122,7 +125,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 5,
@@ -138,7 +142,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 6,
@@ -153,7 +158,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "transportation",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 7,
@@ -169,7 +175,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "transportation",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 8,
@@ -185,7 +192,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "transportation",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 9,
@@ -200,7 +208,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "transportation",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 10,
@@ -219,7 +228,8 @@ export default {
                     canBuy: false,
                     perSecond: 5000,
                     type: "sports",
-                    show: true
+                    show: true,
+                    utility: "investment"
                 },
                 {
                     num: 11,
@@ -240,7 +250,8 @@ export default {
                     canBuy: false,
                     scorePerSecond: 10000,
                     type: "sports",
-                    show: true
+                    show: true,
+                    utility: "investment"
                 },
                 {
                     num: 12,
@@ -262,7 +273,8 @@ export default {
                     canBuy: false,
                     scorePerSecond: 12000,
                     type: "sports",
-                    show: false
+                    show: false,
+                    utility: "investment"
                 },
                 {
                     num: 13,
@@ -279,7 +291,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 },
                 {
                     num: 14,
@@ -295,7 +308,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     type: "real estate",
-                    show: true
+                    show: true,
+                    utility: "fun"
                 }
             ]
         }
@@ -314,17 +328,14 @@ export default {
         return this.$store.getters.filterByType
       },
 
-      filteredProperties() {
-        if (this.filterByType === "all") {
-          return this.properties
-        } else {
-          return this.properties.filter(property => property.type === this.filterByType)
-        }
-      },
-
       filterByUtility() {
         return this.$store.getters.filterByUtility
-      }
+      },
+
+      filteredProperties() {
+        return this.filterPurchasesByUtility(this.filterPurchasesByType(this.properties))
+
+      },
     },
 
     beforeMount() {
@@ -373,6 +384,22 @@ export default {
           this.properties.sort((a,b) => a.price > b.price ? 1 : -1)
         } else {
           this.properties.sort((a, b) => a.price < b.price ? 1 : -1)
+        }
+      },
+
+      filterPurchasesByType(properties) {
+        if (this.filterByType === "all") {
+          return properties
+        } else {
+          return properties.filter(property => property.type === this.filterByType)
+        }
+      },
+
+      filterPurchasesByUtility(properties) {
+        if (this.filterByUtility === "all") {
+          return properties
+        } else {
+          return properties.filter(property => property.utility === this.filterByUtility)
         }
       }
     },

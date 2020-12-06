@@ -23,7 +23,6 @@ const mutations = {
     },
     filterByUtility(state, utility) {
         state.filterByUtility = utility
-        console.log(state.filterByUtility)
     }
 }
 

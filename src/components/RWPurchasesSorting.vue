@@ -51,7 +51,7 @@ export default {
         },
 
         filterByUtility(event) {
-            console.log(event.target.value)
+            this.$store.commit('filterByUtility', event.target.value)
         }
     }
 }
