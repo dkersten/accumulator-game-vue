@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="inner-rwCard-container">
-        <div v-for="property in properties" :key="property.num" :class="property.canBuy ? 'more' : 'less'" class="rw-purchase-card">
+        <div
+          v-for="property in filteredProperties"
+          :key="property.num" 
+          :class="property.canBuy ? 'more' : 'less'"
+          class="rw-purchase-card"
+        >
             <div class="top">
                 <div class="left">
                     <h3>{{property.title}}</h3>
@@ -67,7 +72,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 2,
@@ -82,7 +88,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 3,
@@ -98,7 +105,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 4,
@@ -113,7 +121,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 5,
@@ -128,7 +137,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 6,
@@ -142,7 +152,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "transportation"
+                    type: "transportation",
+                    show: true
                 },
                 {
                     num: 7,
@@ -157,7 +168,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "transportation"
+                    type: "transportation",
+                    show: true
                 },
                 {
                     num: 8,
@@ -172,7 +184,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "transportation"
+                    type: "transportation",
+                    show: true
                 },
                 {
                     num: 9,
@@ -186,7 +199,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "transportation"
+                    type: "transportation",
+                    show: true
                 },
                 {
                     num: 10,
@@ -204,7 +218,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     perSecond: 5000,
-                    type: "sports"
+                    type: "sports",
+                    show: true
                 },
                 {
                     num: 11,
@@ -224,7 +239,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     scorePerSecond: 10000,
-                    type: "sports"
+                    type: "sports",
+                    show: true
                 },
                 {
                     num: 12,
@@ -245,7 +261,8 @@ export default {
                     showMoreInfo: false,
                     canBuy: false,
                     scorePerSecond: 12000,
-                    type: "sports"
+                    type: "sports",
+                    show: false
                 },
                 {
                     num: 13,
@@ -261,7 +278,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 },
                 {
                     num: 14,
@@ -276,7 +294,8 @@ export default {
                     numOwned: 0,
                     showMoreInfo: false,
                     canBuy: false,
-                    type: "real estate"
+                    type: "real estate",
+                    show: true
                 }
             ]
         }
@@ -293,13 +312,20 @@ export default {
 
       filterByType() {
         return this.$store.getters.filterByType
+      },
+
+      filteredProperties() {
+        if (this.filterByType === "all") {
+          return this.properties
+        } else {
+          return this.properties.filter(property => property.type === this.filterByType)
+        }
       }
     },
 
     beforeMount() {
         this.canPurchase()
         this.sortByPrice()
-        this.filterCardsByType()
     },
 
     methods: {
@@ -344,17 +370,6 @@ export default {
         } else {
           this.properties.sort((a, b) => a.price < b.price ? 1 : -1)
         }
-      },
-
-      filterCardsByType() {
-        for (const property of this.properties) {
-          // console.log(property.type)
-          if (property.type === this.filterByType) {
-            console.log(property.title)
-          } else {
-            console.log(property.title)
-          }
-        }
       }
     },
 
@@ -365,9 +380,6 @@ export default {
 
       priceSorting() {
         this.sortByPrice()
-      },
-      filterByType() {
-        this.filterCardsByType()
       }
     }
 }
