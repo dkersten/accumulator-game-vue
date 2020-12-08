@@ -1,6 +1,6 @@
 <template>
     <div class="inner-rwPerson-card-container">
-        <div v-for="person in people" :key="person.rank" class="person-card" :class="person.wealtherThan ? 'more' : 'less'">
+        <!-- <div v-for="person in people" :key="person.rank" class="person-card" :class="person.wealtherThan ? 'more' : 'less'">
             <div class="left">
                 <span class="rank">#{{person.rank}}</span>
                 <h4>{{person.name}}</h4>
@@ -8,6 +8,9 @@
             <div class="right">
                 <span :class="person.wealtherThan ? 'more' : 'less'" class="net-worth">{{person.netWorthFormatted}}</span>
             </div>
+        </div> -->
+        <div>
+            {{ parsedPeople[0] }}
         </div>
     </div>
 </template>
@@ -19,86 +22,96 @@ export default {
 
     },
 
+    created() {
+        this.people = this.$store.getters.people
+    },
+
     data() {
         return {
-            people: [
-                {
-                    name: "Jeff Bezos",
-                    rank: 1,
-                    netWorth: 190900000000,
-                    netWorthFormatted: this.formatNumbers(190900000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Bernard Arnault & family",
-                    rank: 2,
-                    netWorth: 114700000000,
-                    netWorthFormatted: this.formatNumbers(114700000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Bill Gates",
-                    rank: 3,
-                    netWorth: 113600000000,
-                    netWorthFormatted: this.formatNumbers(113600000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Mark Zuckerberg",
-                    rank: 4,
-                    netWorth: 103800000000,
-                    netWorthFormatted: this.formatNumbers(103800000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Elon Musk",
-                    rank: 5,
-                    netWorth: 91700000000,
-                    netWorthFormatted: this.formatNumbers(91700000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Mukesh Ambani",
-                    rank: 6,
-                    netWorth: 77500000000,
-                    netWorthFormatted: this.formatNumbers(77500000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Warren Buffett",
-                    rank: 7,
-                    netWorth: 76600000000,
-                    netWorthFormatted: this.formatNumbers(76600000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Larry Ellison",
-                    rank: 8,
-                    netWorth: 74800000000,
-                    netWorthFormatted: this.formatNumbers(74800000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Steve Ballmer",
-                    rank: 9,
-                    netWorth: 70700000000,
-                    netWorthFormatted: this.formatNumbers(70700000000),
-                    wealtherThan: false
-                },
-                {
-                    name: "Larry Page",
-                    rank: 10,
-                    netWorth: 70300000000,
-                    netWorthFormatted: this.formatNumbers(70300000000),
-                    wealtherThan: false
-                }
-            ]
+
+            people: ''
+
+            // people: [
+            //     {
+            //         name: "Jeff Bezos",
+            //         rank: 1,
+            //         netWorth: 190900000000,
+            //         netWorthFormatted: this.formatNumbers(190900000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Bernard Arnault & family",
+            //         rank: 2,
+            //         netWorth: 114700000000,
+            //         netWorthFormatted: this.formatNumbers(114700000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Bill Gates",
+            //         rank: 3,
+            //         netWorth: 113600000000,
+            //         netWorthFormatted: this.formatNumbers(113600000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Mark Zuckerberg",
+            //         rank: 4,
+            //         netWorth: 103800000000,
+            //         netWorthFormatted: this.formatNumbers(103800000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Elon Musk",
+            //         rank: 5,
+            //         netWorth: 91700000000,
+            //         netWorthFormatted: this.formatNumbers(91700000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Mukesh Ambani",
+            //         rank: 6,
+            //         netWorth: 77500000000,
+            //         netWorthFormatted: this.formatNumbers(77500000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Warren Buffett",
+            //         rank: 7,
+            //         netWorth: 76600000000,
+            //         netWorthFormatted: this.formatNumbers(76600000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Larry Ellison",
+            //         rank: 8,
+            //         netWorth: 74800000000,
+            //         netWorthFormatted: this.formatNumbers(74800000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Steve Ballmer",
+            //         rank: 9,
+            //         netWorth: 70700000000,
+            //         netWorthFormatted: this.formatNumbers(70700000000),
+            //         wealtherThan: false
+            //     },
+            //     {
+            //         name: "Larry Page",
+            //         rank: 10,
+            //         netWorth: 70300000000,
+            //         netWorthFormatted: this.formatNumbers(70300000000),
+            //         wealtherThan: false
+            //     }
+            // ]
         }
     },
 
     computed: {
         yourWealth() {
             return this.$store.getters.yourWealth
+        },
+        parsedPeople() {
+            return JSON.parse(this.people)
         }
     },
 
