@@ -1,7 +1,7 @@
 const state = {
-    wealth: 2183000000,
+    wealth: 10000,
     perSecond: 0,
-    netWorth: 2183000000
+    netWorth: 10000
 }
 
 const getters = {
