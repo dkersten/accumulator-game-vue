@@ -27,7 +27,7 @@ export default {
     },
 
     mounted() {
-        this.$set(this.$store.dispatch('fetchRichest'))
+        // this.$set(this.$store.dispatch('fetchRichest'))
     },
 
     data() {
