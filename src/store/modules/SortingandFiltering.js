@@ -1,13 +1,15 @@
 const state = {
     priceSortingLowToHigh: true,
     filterByType: "all",
-    filterByUtility: "all"
+    filterByUtility: "all",
+    filterByPurchase: "all"
 }
 
 const getters = {
     priceSorting: (state) => state.priceSortingLowToHigh,
     filterByType: (state) => state.filterByType,
-    filterByUtility: (state) => state.filterByUtility
+    filterByUtility: (state) => state.filterByUtility,
+    filterByPurchase: (state) => state.filterByPurchase
 }
 
 const actions = {
@@ -23,6 +25,9 @@ const mutations = {
     },
     filterByUtility(state, utility) {
         state.filterByUtility = utility
+    },
+    filterByPurchase(state, purchase) {
+        state.filterByPurchase = purchase
     }
 }
 

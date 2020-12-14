@@ -27,6 +27,14 @@
                         <option value="fun">No ROI, just for fun</option>
                     </select>
                 </div>
+                <div class="filter-by-purchased">
+                    <span>Filter by Owned Properties </span>
+                    <select @change="filterByPurchase($event)" name="byPurchase" id="byPurchase">
+                        <option value="all">All</option>
+                        <option value="purchased">Already Purchased</option>
+                        <option value="purchase">Not Yet Purchased</option>
+                    </select>
+                </div>
             </div>
         </div>
   </div>
@@ -52,6 +60,10 @@ export default {
 
         filterByUtility(event) {
             this.$store.commit('filterByUtility', event.target.value)
+        },
+
+        filterByPurchase(event) {
+            this.$store.commit('filterByPurchase', event.target.value)
         }
     }
 }

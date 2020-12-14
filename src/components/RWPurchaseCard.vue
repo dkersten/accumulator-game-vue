@@ -354,8 +354,12 @@ export default {
         return this.$store.getters.filterByUtility
       },
 
+      filterByPurchase() {
+        return this.$store.getters.filterByPurchase
+      },
+
       filteredProperties() {
-        return this.filterPurchasesByUtility(this.filterPurchasesByType(this.properties))
+        return this.filterPurchasesByUtility(this.filterPurchasesByType(this.filterPurchasesByOwnership(this.properties)))
 
       },
     },
@@ -426,6 +430,16 @@ export default {
           return properties
         } else {
           return properties.filter(property => property.utility === this.filterByUtility)
+        }
+      },
+
+      filterPurchasesByOwnership(properties) {
+        if (this.filterByPurchase === "all") {
+          return properties
+        } else if (this.filterByPurchase === "purchased") {
+          return properties.filter(property => property.purchased === true)
+        } else if (this.filterByPurchase === "purchase") {
+          return properties.filter(property => property.purchased === false)
         }
       }
     },
