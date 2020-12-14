@@ -4,7 +4,7 @@
         <div
           v-for="property in filteredProperties"
           :key="property.num" 
-          :class="property.canBuy ? 'more' : 'less'"
+          :class="[property.canBuy ? 'more' : 'less', property.purchased ? 'purchased' : 'purchase']"
           class="rw-purchase-card"
         >
             <div class="top">
@@ -27,12 +27,20 @@
                     </button>
 
                     <button
-                        class="buy"
-                        v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
-                        :disabled="property.canBuy === false"
-                        @click="purchaseRWProperty(property.title)"
+                      v-if="property.purchased === false"
+                      class="buy"
+                      v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                      :disabled="property.canBuy === false"
+                      @click="purchaseRWProperty(property.title)"
                     >
                         Purchase
+                    </button>
+                    <button
+                      v-else
+                      class="buy purchased"
+                      disabled
+                    >
+                      Purchased
                     </button>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container">
@@ -74,7 +82,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 2,
@@ -91,7 +100,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 3,
@@ -109,7 +119,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 4,
@@ -126,7 +137,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 5,
@@ -143,7 +155,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 6,
@@ -159,7 +172,8 @@ export default {
                     canBuy: false,
                     type: "transportation",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 7,
@@ -176,7 +190,8 @@ export default {
                     canBuy: false,
                     type: "transportation",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 8,
@@ -193,7 +208,8 @@ export default {
                     canBuy: false,
                     type: "transportation",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 9,
@@ -209,7 +225,8 @@ export default {
                     canBuy: false,
                     type: "transportation",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 10,
@@ -229,7 +246,8 @@ export default {
                     perSecond: 5000,
                     type: "sports",
                     show: true,
-                    utility: "investment"
+                    utility: "investment",
+                    purchased: false
                 },
                 {
                     num: 11,
@@ -251,7 +269,8 @@ export default {
                     scorePerSecond: 10000,
                     type: "sports",
                     show: true,
-                    utility: "investment"
+                    utility: "investment",
+                    purchased: false
                 },
                 {
                     num: 12,
@@ -274,7 +293,8 @@ export default {
                     scorePerSecond: 12000,
                     type: "sports",
                     show: false,
-                    utility: "investment"
+                    utility: "investment",
+                    purchased: false
                 },
                 {
                     num: 13,
@@ -292,7 +312,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 },
                 {
                     num: 14,
@@ -309,7 +330,8 @@ export default {
                     canBuy: false,
                     type: "real estate",
                     show: true,
-                    utility: "fun"
+                    utility: "fun",
+                    purchased: false
                 }
             ]
         }
@@ -361,6 +383,10 @@ export default {
 
                   // update DOM of # of rw properties owned
                   property.numOwned++
+
+                  // disable additional purchases
+                  property.purchased = true
+
                 } else {
                     console.log("you have no power here")
                 }
@@ -441,6 +467,10 @@ export default {
         background: $color-green-dark;
       }
 
+      &.purchased {
+        background: $color-green-dark-disabled;
+      }
+
       .top {
         display: flex;
         justify-content: space-between;
@@ -493,6 +523,16 @@ export default {
 
         button.buy {
           @include buttonDefaultStyling;
+
+          &.purchased {
+            background: $color-grey-info;
+            color: $color-grey-dark;
+            text-shadow: 0px 0px 2px #fff;
+
+            &:hover {
+              cursor: not-allowed;
+            }
+          }
         }
 
         .more-info-container {
