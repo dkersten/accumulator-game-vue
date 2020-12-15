@@ -5,10 +5,29 @@
                 ℹ
                 <span class="tooltiptext">More info</span>
             </span>
+            <button
+                class="info more"
+                v-if="seeMore"
+                @click="showMore"
+            >
+                See More
+            </button>
+            <button 
+                class="info less"
+                v-else
+                @click="showMore"
+            >
+                See Less
+            </button>
         </h3>
         <div class="rw-purchases-container">
-            <RWPurchasesSorting></RWPurchasesSorting>
-            <RWPurchaseCard></RWPurchaseCard>
+            <div
+                class="show-hide-container"
+                :class="seeMore ? 'hide' : 'show'"
+            >
+                <RWPurchasesSorting></RWPurchasesSorting>
+                <RWPurchaseCard></RWPurchaseCard>
+            </div>
             <modal-direction v-model="modalOpen"></modal-direction>
         </div>
     </section>
@@ -30,13 +49,18 @@ export default {
 
     data() {
         return {
-            modalOpen: false
+            modalOpen: false,
+            seeMore: false
         }
     },
 
     methods: {
         openModal() {
             this.modalOpen = !this.modalOpen
+        },
+
+        showMore() {
+            this.seeMore = !this.seeMore
         }
     }
 }
@@ -101,6 +125,31 @@ export default {
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
+        }
+
+        .info {
+            font-size: .9rem;
+            display: inline-block;
+            margin-left: 1rem;
+            @include buttonDefaultStyling;
+            background: $color-grey-info;
+            color: $color-grey-dark;
+            text-shadow: 0 0 2px #fff;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .show-hide-container {
+
+            &.show {
+                display: block;
+            }
+
+            &.hide {
+                display: none;
+            }
         }
     }
 
