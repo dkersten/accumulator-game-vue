@@ -1,6 +1,7 @@
 <template>
     <section class="property-container">
         <h3>Properties</h3>
+        <PropertyBuySellControls />
         <div class="properties-container">
             <PropertyCard></PropertyCard>
         </div>
@@ -10,11 +11,13 @@
 <script>
 
 import PropertyCard from '../components/PropertyCard'
+import PropertyBuySellControls from '../components/PropertyBuySellControls'
 
 export default {
     name: 'PropertiesContianer',
     components: {
-        PropertyCard
+        PropertyCard,
+        PropertyBuySellControls
     }
 }
 </script>

@@ -6,6 +6,7 @@ import UpgradesOwned from './modules/UpgradesOwned'
 import RwPurchasesOwned from './modules/RwPurchasesOwned'
 import SortingandFiltering from './modules/SortingandFiltering'
 import RWPeople from './modules/RWPeople'
+import PropertiesBuySell from './modules/PropertiesBuySell'
 
 // Load Vuex
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export default new Vuex.Store({
         UpgradesOwned,
         RwPurchasesOwned,
         SortingandFiltering,
-        RWPeople
+        RWPeople,
+        PropertiesBuySell
     }
 })
