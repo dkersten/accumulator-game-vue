@@ -320,10 +320,77 @@ export default {
                     title: "Private Island, Nelson, New Zealand",
                     price: 11313017,
                     features: [
-                        "1287 acre private island ",
+                        "1287 acre private island",
                         "9 bedroom, 3 bath residence",
                         "Features rolling paddocks, native bush, sea, cliffs, and beaches",
                         "Year round temperate climate"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false,
+                    type: "real estate",
+                    show: true,
+                    utility: "fun",
+                    purchased: false
+                },
+                {
+                    num: 15,
+                    title: "Private Chef",
+                    price: 90000,
+                    features: [
+                        "Tasty and healthy meals",
+                        "Let someone else do your food prep"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false,
+                    type: "misc",
+                    show: true,
+                    utility: "fun",
+                    purchased: false
+                },
+                {
+                    num: 16,
+                    title: "Personal Trainer",
+                    price: 15000,
+                    features: [
+                        "Motivation you need to stay in shape",
+                        "Live a healthy lifestyle with personal training"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false,
+                    type: "misc",
+                    show: true,
+                    utility: "fun",
+                    purchased: false
+                },
+                {
+                    num: 17,
+                    title: "Condo in Downtown Austin, TX",
+                    price: 385000,
+                    features: [
+                        "1 bedroom, 1 bath in the heart of downtown Austin",
+                        "Appliances included",
+                        "Access to a pool an gym on the premises",
+                        "Close to grocery stores, restaurants, bars, and more"
+                    ],
+                    numOwned: 0,
+                    showMoreInfo: false,
+                    canBuy: false,
+                    type: "real estate",
+                    show: true,
+                    utility: "fun",
+                    purchased: false
+                },
+                {
+                    num: 19,
+                    title: "Townhome in Chicago, IL",
+                    price: 454900,
+                    features: [
+                        "3 bedroom, 2 bath northwest of downtown",
+                        "1500 square feet",
+                        "New gut rehab, everything is brand new"
                     ],
                     numOwned: 0,
                     showMoreInfo: false,
