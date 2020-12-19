@@ -28,12 +28,21 @@
                     >
                             Purchase
                     </button>
-                    <button
+                    <span
                         v-else
-                        class="sell"
                     >
-                           Sell 
-                    </button>
+                        <button
+                            class="sell"
+                        >
+                            Sell 
+                        </button>
+                        <button
+                            class="sell"
+                            @click="sellAll(property.name)"
+                        >
+                            Sell All
+                        </button>
+                    </span>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container ">
                     <ul>
@@ -62,7 +71,8 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    totalCombinedPrice: 0
                 },
                 {
                     name: "Food Cart",
@@ -70,7 +80,8 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    totalCombinedPrice: 0
                 },
                 {
                     name: "Food Truck",
@@ -78,7 +89,8 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 75,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    totalCombinedPrice: 0
                 },
                 {
                     name: "Restaurant",
@@ -86,7 +98,8 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 400,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    totalCombinedPrice: 0
                 },
                 {
                     name: "Franchise of Restaurants",
@@ -94,7 +107,8 @@ export default {
                     numOwned: 0,
                     scorePerSecond: 1000,
                     showMoreInfo: false,
-                    canBuy: false
+                    canBuy: false,
+                    totalCombinedPrice: 0
                 }
             ],
             priceIncrease: 1.25
@@ -132,6 +146,9 @@ export default {
                         // update DOM of # of properties owned
                         property.numOwned++
 
+                        // track total price paid
+                        property.totalCombinedPrice += property.price
+
                         // increase price of purchased property
                         const newPrice = property.price * this.priceIncrease
                         property.price = Math.round(newPrice)
@@ -142,6 +159,34 @@ export default {
                 }
             }
         },
+
+        sellAll(name) {
+            for (const property of this.properties) {
+                if (property.name === name) {
+                    if (property.numOwned > 0) {
+                        let amountToSell = Math.round(property.totalCombinedPrice * .8)
+
+                        // add money to total money
+                        this.$store.commit('adjustWealthOnBusinessSell', amountToSell)
+
+                        // adjust persecond score
+                        let perSecondAdjustment = (property.numOwned * property.scorePerSecond)
+                        this.$store.commit('updatePerSecondScoreOnSell', perSecondAdjustment)
+
+                        // adjust networth
+                        let netWorthAdjustment = (property.totalCombinedPrice - amountToSell)
+                        console.log(netWorthAdjustment)
+                        this.$store.commit('updatePerSecondNetWorthOnSell', netWorthAdjustment)
+
+                        // reset num owned and total combined price
+                        property.numOwned = 0
+                        property.totalCombinedPrice = 0
+
+                    }
+                }
+            }
+        },
+
         canPurchase() {
             for (const property of this.properties) {
                 if (this.yourWealth >= property.price) {
@@ -213,6 +258,10 @@ export default {
                 background: $color-grey-info;
                 color: $color-grey-dark;
                 text-shadow: none;
+
+                &:first-of-type {
+                    margin-right: .5rem;
+                }
             }
 
             .more-info-container {

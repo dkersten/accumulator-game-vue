@@ -1,5 +1,5 @@
 const state = {
-    buyProperties: false
+    buyProperties: true
 }
 
 const getters = {

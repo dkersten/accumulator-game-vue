@@ -15,7 +15,7 @@ const actions = {
 }
 
 const mutations = {
-    // wealth mutations
+    ////// wealth mutations
     incrementWealthOnClick (state) {
         state.wealth++
     },
@@ -31,19 +31,30 @@ const mutations = {
     subtractRWPurchasePrice (state, rwPurchasePrice) {
         state.wealth -= rwPurchasePrice
     },
+    // Sell business properties
+    adjustWealthOnBusinessSell (state, amount) {
+        state.wealth += amount
+    },
 
-    // per second score mutations
+    ////// per second score mutations
     updatePerSecondScoreWithPurchase (state, points) {
         state.perSecond += points
     },
+    updatePerSecondScoreOnSell (state, points) {
+        state.perSecond -= points
+    },
 
-    // Net worth mutations
+    ////// Net worth mutations
     incrementNetWorthOnClick (state) {
         state.netWorth++
     },
     updatePerSecondWNetWorth (state) {
         state.netWorth += state.perSecond
+    },
+    updatePerSecondNetWorthOnSell (state, amount) {
+        state.netWorth -= amount
     }
+
 }
 
 export default {
