@@ -32,12 +32,16 @@
                         v-else
                     >
                         <button
+                            :disabled="property.numOwned === 0"
                             class="sell"
+                            v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
                         >
                             Sell 
                         </button>
                         <button
+                            :disabled="property.numOwned === 0"
                             class="sell"
+                            v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
                             @click="sellAll(property.name)"
                         >
                             Sell All
@@ -160,9 +164,15 @@ export default {
             }
         },
 
+        sellSingle(name) {
+            console.log(name)
+            // implement formula to detect how much 1 can be sold for
+        },
+
         sellAll(name) {
             for (const property of this.properties) {
                 if (property.name === name) {
+
                     if (property.numOwned > 0) {
                         let amountToSell = Math.round(property.totalCombinedPrice * .8)
 
@@ -175,7 +185,6 @@ export default {
 
                         // adjust networth
                         let netWorthAdjustment = (property.totalCombinedPrice - amountToSell)
-                        console.log(netWorthAdjustment)
                         this.$store.commit('updatePerSecondNetWorthOnSell', netWorthAdjustment)
 
                         // reset num owned and total combined price
@@ -255,9 +264,6 @@ export default {
 
             button.sell {
                 @include buttonDefaultStyling;
-                background: $color-grey-info;
-                color: $color-grey-dark;
-                text-shadow: none;
 
                 &:first-of-type {
                     margin-right: .5rem;
