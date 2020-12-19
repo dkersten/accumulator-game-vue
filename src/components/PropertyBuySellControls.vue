@@ -16,6 +16,12 @@
                 Buy Properties
             </button>
         </div>
+        <p
+            class="sell-info"
+            v-if="!buyProperties"
+        >
+            Sell a business property for 80% of what you paid for it.
+        </p>
     </div>
 </template>
 
@@ -55,6 +61,14 @@ export default {
         margin: 0 auto $vertical-spacing-sm;
         background: $color-green-bright
 
+    }
+
+    p.sell-info {
+        text-align: center;
+        margin-bottom: $vertical-spacing-sm;
+        max-width: 345px;
+        line-height: $line-height-paragraph;
+        color: $color-grey-dark;
     }
 
 </style>

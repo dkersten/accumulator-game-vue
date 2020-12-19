@@ -20,12 +20,19 @@
                             {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
                     <button
+                        v-if="buyProperties"
                         class="buy"
                         v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
                         :disabled="property.canBuy === false"
                         @click="purchase(property.name)"
                     >
                             Purchase
+                    </button>
+                    <button
+                        v-else
+                        class="sell"
+                    >
+                           Sell 
                     </button>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container ">
@@ -97,6 +104,10 @@ export default {
     computed: {
         yourWealth() {
             return this.$store.getters.yourWealth
+        },
+
+        buyProperties() {
+            return this.$store.getters.buyProperties
         }
     },
 
@@ -195,6 +206,13 @@ export default {
 
             button.buy {
                 @include buttonDefaultStyling;
+            }
+
+            button.sell {
+                @include buttonDefaultStyling;
+                background: $color-grey-info;
+                color: $color-grey-dark;
+                text-shadow: none;
             }
 
             .more-info-container {
