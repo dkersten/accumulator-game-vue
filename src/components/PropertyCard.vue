@@ -35,13 +35,6 @@
                             :disabled="property.numOwned === 0"
                             class="sell"
                             v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
-                        >
-                            Sell 
-                        </button>
-                        <button
-                            :disabled="property.numOwned === 0"
-                            class="sell"
-                            v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
                             @click="sellAll(property.name)"
                         >
                             Sell All
@@ -164,11 +157,6 @@ export default {
             }
         },
 
-        sellSingle(name) {
-            console.log(name)
-            // implement formula to detect how much 1 can be sold for
-        },
-
         sellAll(name) {
             for (const property of this.properties) {
                 if (property.name === name) {
@@ -264,10 +252,6 @@ export default {
 
             button.sell {
                 @include buttonDefaultStyling;
-
-                &:first-of-type {
-                    margin-right: .5rem;
-                }
             }
 
             .more-info-container {
