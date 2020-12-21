@@ -429,6 +429,10 @@ export default {
         return this.filterPurchasesByUtility(this.filterPurchasesByType(this.filterPurchasesByOwnership(this.properties)))
 
       },
+
+      buyProperties() {
+        return this.$store.getters.buyRWProperties
+      }
     },
 
     beforeMount() {

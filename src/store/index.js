@@ -7,6 +7,7 @@ import RwPurchasesOwned from './modules/RwPurchasesOwned'
 import SortingandFiltering from './modules/SortingandFiltering'
 import RWPeople from './modules/RWPeople'
 import PropertiesBuySell from './modules/PropertiesBuySell'
+import RWPRopertiesBuySell from './modules/RWPropertiesBuySell'
 
 // Load Vuex
 Vue.use(Vuex)
@@ -20,6 +21,7 @@ export default new Vuex.Store({
         RwPurchasesOwned,
         SortingandFiltering,
         RWPeople,
-        PropertiesBuySell
+        PropertiesBuySell,
+        RWPRopertiesBuySell
     }
 })

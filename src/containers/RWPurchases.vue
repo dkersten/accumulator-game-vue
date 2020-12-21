@@ -26,6 +26,7 @@
                 :class="seeMore ? 'hide' : 'show'"
             >
                 <RWPurchasesSorting></RWPurchasesSorting>
+                <RWPropertyBuySellControls></RWPropertyBuySellControls>
                 <RWPurchaseCard></RWPurchaseCard>
             </div>
             <modal-direction v-model="modalOpen"></modal-direction>
@@ -38,13 +39,15 @@
 import RWPurchaseCard from '../components/RWPurchaseCard'
 import ModalDirection from '../components/Modal'
 import RWPurchasesSorting from '../components/RWPurchasesSorting'
+import RWPropertyBuySellControls from '../components/RWPropertyBuySellControll'
 
 export default {
     name: 'RWPurchases',
     components: {
         RWPurchaseCard,
         ModalDirection,
-        RWPurchasesSorting
+        RWPurchasesSorting,
+        RWPropertyBuySellControls
     },
 
     data() {
