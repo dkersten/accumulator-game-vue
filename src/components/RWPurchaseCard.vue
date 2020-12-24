@@ -47,7 +47,7 @@
                       </button>
                     </span>
                     <span
-                      v-else
+                      v-else-if="property.canSell"
                     >
                       <button
                             :disabled="property.numOwned === 0"
@@ -57,6 +57,12 @@
                         >
                             Sell
                         </button>
+                    </span>
+                    <span
+                      class="cannot-sell"
+                      v-else
+                    >
+                      Cannot sell
                     </span>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container">
@@ -99,7 +105,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 2,
@@ -117,7 +124,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 3,
@@ -136,7 +144,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 4,
@@ -154,7 +163,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 5,
@@ -172,7 +182,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 6,
@@ -189,7 +200,8 @@ export default {
                     type: "transportation",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 7,
@@ -207,7 +219,8 @@ export default {
                     type: "transportation",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 8,
@@ -225,7 +238,8 @@ export default {
                     type: "transportation",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 9,
@@ -242,7 +256,8 @@ export default {
                     type: "transportation",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 10,
@@ -263,7 +278,8 @@ export default {
                     type: "sports",
                     show: true,
                     utility: "investment",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 11,
@@ -286,7 +302,8 @@ export default {
                     type: "sports",
                     show: true,
                     utility: "investment",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 12,
@@ -310,7 +327,8 @@ export default {
                     type: "sports",
                     show: false,
                     utility: "investment",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 13,
@@ -329,7 +347,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 14,
@@ -347,7 +366,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 15,
@@ -363,7 +383,8 @@ export default {
                     type: "misc",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: false
                 },
                 {
                     num: 16,
@@ -379,7 +400,8 @@ export default {
                     type: "misc",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: false
                 },
                 {
                     num: 17,
@@ -397,7 +419,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 },
                 {
                     num: 19,
@@ -414,7 +437,8 @@ export default {
                     type: "real estate",
                     show: true,
                     utility: "fun",
-                    purchased: false
+                    purchased: false,
+                    canSell: true
                 }
             ]
         }
@@ -664,6 +688,11 @@ export default {
 
         button.sell {
           @include buttonDefaultStyling
+        }
+
+        span.cannot-sell {
+          color: $color-cream;
+          font-size: .9rem;
         }
 
         .more-info-container {
