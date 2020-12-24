@@ -26,22 +26,38 @@
                             {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
 
-                    <button
-                      v-if="property.purchased === false"
-                      class="buy"
-                      v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
-                      :disabled="property.canBuy === false"
-                      @click="purchaseRWProperty(property.title)"
+                    <span
+                      v-if="buyProperties"
                     >
-                        Purchase
-                    </button>
-                    <button
+                      <button
+                        v-if="property.purchased === false"
+                        class="buy"
+                        v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                        :disabled="property.canBuy === false"
+                        @click="purchaseRWProperty(property.title)"
+                      >
+                          Purchase
+                      </button>
+                      <button
+                        v-else
+                        class="buy purchased"
+                        disabled
+                      >
+                        Purchased
+                      </button>
+                    </span>
+                    <span
                       v-else
-                      class="buy purchased"
-                      disabled
                     >
-                      Purchased
-                    </button>
+                      <button
+                            :disabled="property.numOwned === 0"
+                            class="sell"
+                            v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
+                            @click="sellRWProperty(property.name)"
+                        >
+                            Sell
+                        </button>
+                    </span>
                 </div>
                 <div v-show="property.showMoreInfo" class="more-info-container">
                     <ul>
@@ -512,6 +528,32 @@ export default {
         } else if (this.filterByPurchase === "purchase") {
           return properties.filter(property => property.purchased === false)
         }
+      },
+
+      sellRWProperty(name) {
+        for (const property of this.properties) {
+          if (property.name === name) {
+            if (property.numOwned > 0) {
+              let amountToSell = Math.round(property.price * .8)
+
+              // add momney to total money
+              this.$store.commit('adjustWealthOnRWPropertySell', amountToSell)
+
+              // adjust persecond score
+              if (property.utility === "investment") {
+                this.$store.commit('updatePerSecondScoreOnSell', property.scorePerSecond)
+              }
+
+              // adjust networth
+              let netWorthAdjustment = (property.price - amountToSell)
+              this.$store.commit('updatePerSecondNetWorthOnSell', netWorthAdjustment)
+
+              // reset num owned and purchased boolean
+              property.numOwned = 0
+              property.purchased = false
+            }
+          }
+        }
       }
     },
 
@@ -618,6 +660,10 @@ export default {
               cursor: not-allowed;
             }
           }
+        }
+
+        button.sell {
+          @include buttonDefaultStyling
         }
 
         .more-info-container {

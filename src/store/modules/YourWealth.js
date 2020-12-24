@@ -35,6 +35,9 @@ const mutations = {
     adjustWealthOnBusinessSell (state, amount) {
         state.wealth += amount
     },
+    adjustWealthOnRWPropertySell (state, amount) {
+        state.wealth += amount
+    },
 
     ////// per second score mutations
     updatePerSecondScoreWithPurchase (state, points) {
