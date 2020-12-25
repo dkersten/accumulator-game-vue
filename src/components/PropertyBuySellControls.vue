@@ -1,13 +1,30 @@
 <template>
     <div class="control-container">
         <div class="buy-sell-btns">
-            <button
+            <span
                 v-if="buyProperties"
+            >
+            <button
+                v-if="buyProperties10"
+                class="buy bulk"
+                @click="toggleBuy10"
+            >
+                Buy single
+            </button>
+            <button
+                v-else
+                class="buy bulk"
+                @click="toggleBuy10"
+            >
+                Buy 10
+            </button>
+            <button
                 class="sell"
                 @click="toggleBuy"
             >
                 Sell Properties
             </button>
+            </span>
             <button
                 v-else
                 class="buy"
@@ -35,12 +52,19 @@ export default {
     computed: {
         buyProperties() {
             return this.$store.getters.buyProperties
+        },
+        buyProperties10() {
+            return this.$store.getters.buyProperties10
         }
     },
 
     methods: {
         toggleBuy() {
             this.$store.commit('toggleBuyProperties')
+        },
+        toggleBuy10() {
+            this.$store.commit('toggleBuyProperties10')
+            alert
         }
     }
 }
@@ -59,8 +83,12 @@ export default {
     button {
         @include buttonDefaultStyling;
         margin: 0 auto $vertical-spacing-sm;
-        background: $color-green-bright
+        background: $color-green-bright;
+        display: inline-block;
 
+        &.bulk {
+            margin-right: .5rem;
+        }
     }
 
     p.sell-info {
