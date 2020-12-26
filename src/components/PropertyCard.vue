@@ -19,15 +19,28 @@
                         class="more-info">
                             {{property.showMoreInfo ? 'Less Info' : 'More Info'}}
                     </button>
-                    <button
+                    <span
                         v-if="buyProperties"
-                        class="buy"
-                        v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
-                        :disabled="property.canBuy === false"
-                        @click="purchase(property.name)"
                     >
-                            Purchase
-                    </button>
+                        <button
+                            v-if="buyProperties10"
+                            class="buy"
+                            v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                            :disabled="property.canBuy === false"
+                            @click="purchase(property.name)"
+                        >
+                                Purchase 10
+                        </button>
+                        <button
+                            v-else
+                            class="buy"
+                            v-bind:class=" property.canBuy ? 'enabled' : 'disabled'"
+                            :disabled="property.canBuy === false"
+                            @click="purchase(property.name)"
+                        >
+                                Purchase
+                        </button>
+                    </span>
                     <span
                         v-else
                     >
@@ -221,6 +234,15 @@ export default {
                         totalPrice = Math.round(totalPrice * 1.25)
                     }
                     property.price = totalPrice
+                    this.canPurchase()
+                }
+            } else {
+                for (const property of this.properties) {
+                    if (property.numOwned === 0) {
+                        property.price = property.initialPrice
+                    }
+                    // add else if here and determine price based on numOwned and initial price
+                    this.canPurchase()
                 }
             }
         }
