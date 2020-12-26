@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="property in properties" :key="property.name" :class="property.canBuy ? 'more' : 'less'" class="property">
+        <div v-for="property in this.properties" :key="property.name" :class="property.canBuy ? 'more' : 'less'" class="property">
             <div class="left">
                 <h3>{{property.name}}</h3>
                 <span class="cost">
@@ -65,6 +65,7 @@ export default {
                 {
                     name: "Vending Machine",
                     price: 200,
+                    initialPrice: 200,
                     numOwned: 0,
                     scorePerSecond: 4,
                     showMoreInfo: false,
@@ -74,6 +75,7 @@ export default {
                 {
                     name: "Food Cart",
                     price: 50000,
+                    initialPrice: 50000,
                     numOwned: 0,
                     scorePerSecond: 40,
                     showMoreInfo: false,
@@ -83,6 +85,7 @@ export default {
                 {
                     name: "Food Truck",
                     price: 100000,
+                    initialPrice: 100000,
                     numOwned: 0,
                     scorePerSecond: 75,
                     showMoreInfo: false,
@@ -92,6 +95,7 @@ export default {
                 {
                     name: "Restaurant",
                     price: 2000000,
+                    initialPrice: 2000000,
                     numOwned: 0,
                     scorePerSecond: 400,
                     showMoreInfo: false,
@@ -101,6 +105,7 @@ export default {
                 {
                     name: "Franchise of Restaurants",
                     price: 50000000,
+                    initialPrice: 50000000,
                     numOwned: 0,
                     scorePerSecond: 1000,
                     showMoreInfo: false,
@@ -119,6 +124,9 @@ export default {
 
         buyProperties() {
             return this.$store.getters.buyProperties
+        },
+        buyProperties10() {
+            return this.$store.getters.buyProperties10
         }
     },
 
@@ -135,13 +143,25 @@ export default {
                         this.$store.commit('subtractPropertyPrice', property.price)
                         
                         // update total properties owned in state
-                        this.$store.commit('incrementTotalPropertiesOwned')
+                        if (this.$store.getters.buyProperties10) {
+                            this.$store.commit('incrementTotalPropertiesOwned10')
+                        } else {
+                            this.$store.commit('incrementTotalPropertiesOwned')
+                        }
 
                         // update score per second to state
-                        this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
+                        if (this.$store.getters.buyProperties10) {
+                            this.$store.commit('updatePerSecondScoreWithPurchase', (property.scorePerSecond * 10))
+                        } else {
+                            this.$store.commit('updatePerSecondScoreWithPurchase', property.scorePerSecond)
+                        }
 
                         // update DOM of # of properties owned
-                        property.numOwned++
+                        if (this.$store.getters.buyProperties10) {
+                            property.numOwned += 10
+                        } else {
+                            property.numOwned++
+                        }
 
                         // track total price paid
                         property.totalCombinedPrice += property.price
@@ -192,12 +212,26 @@ export default {
                     property.canBuy = false
                 }
             }
+        },
+        setPrice() {
+            if (this.buyProperties10) {
+                for (const property of this.properties) {
+                    let totalPrice = property.price
+                    for (let i = 0; i < 10; i++) {
+                        totalPrice = Math.round(totalPrice * 1.25)
+                    }
+                    property.price = totalPrice
+                }
+            }
         }
     },
 
     watch: {
         yourWealth() {
             this.canPurchase()
+        },
+        buyProperties10() {
+            this.setPrice()
         }
     }
 }
