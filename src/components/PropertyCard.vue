@@ -180,8 +180,16 @@ export default {
                         property.totalCombinedPrice += property.price
 
                         // increase price of purchased property
-                        const newPrice = property.price * this.priceIncrease
-                        property.price = Math.round(newPrice)
+                        if (this.$store.getters.buyProperties10) {
+                            let totalPrice = property.price
+                            for (let i = 0; i < 11; i++) {
+                                totalPrice = Math.round(totalPrice * 1.25)
+                            }
+                            property.price = totalPrice
+                        } else {
+                            const newPrice = property.price * this.priceIncrease
+                            property.price = Math.round(newPrice)
+                        }
 
                     } else {
                     console.log("you have no power here")
@@ -227,6 +235,7 @@ export default {
             }
         },
         setPrice() {
+            
             if (this.buyProperties10) {
                 for (const property of this.properties) {
                     let totalPrice = property.price
@@ -240,9 +249,15 @@ export default {
                 for (const property of this.properties) {
                     if (property.numOwned === 0) {
                         property.price = property.initialPrice
+                        this.canPurchase()
+                    } else {
+                        let totalPrice = property.initialPrice
+                        for (let i = 0; i <= property.numOwned; i++) {
+                            totalPrice = Math.round(totalPrice * 1.25)
+                        }
+                        property.price = totalPrice
+                        this.canPurchase()
                     }
-                    // add else if here and determine price based on numOwned and initial price
-                    this.canPurchase()
                 }
             }
         }
