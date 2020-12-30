@@ -17,6 +17,14 @@ export default {
     },
     computed: {
         ...mapGetters(['yourWealth', 'perSecond', 'netWorth'])
+    },
+
+    mounted() {
+        if (localStorage.wealth) {
+        // Code for localStorage/sessionStorage.
+            this.$store.commit('localStorageWealth')
+            this.$store.commit('localStorageNetWorth')
+        }
     }
 }
 </script>

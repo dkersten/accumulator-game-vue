@@ -56,6 +56,14 @@ const mutations = {
     },
     updatePerSecondNetWorthOnSell (state, amount) {
         state.netWorth -= amount
+    },
+
+    /////// local storage mutations
+    localStorageWealth (state) {
+        state.wealth = parseInt(localStorage.wealth)
+    },
+    localStorageNetWorth (state) {
+        state.netWorth = parseInt(localStorage.netWorth)
     }
 
 }
