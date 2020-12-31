@@ -28,6 +28,7 @@ export default {
         saveProgress() {
             // let wealth = this.$store.getters.yourWealth
             localStorage.setItem('wealth', this.$store.getters.yourWealth)
+            localStorage.setItem('perSecond', this.$store.getters.perSecond)
             localStorage.setItem('netWorth', this.$store.getters.netWorth)
         },
         clearProgress() {

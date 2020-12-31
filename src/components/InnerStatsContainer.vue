@@ -23,6 +23,7 @@ export default {
         if (localStorage.wealth) {
         // Code for localStorage/sessionStorage.
             this.$store.commit('localStorageWealth')
+            this.$store.commit('localStoragePerSecond')
             this.$store.commit('localStorageNetWorth')
         }
     }

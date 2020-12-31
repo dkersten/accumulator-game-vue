@@ -62,9 +62,12 @@ const mutations = {
     localStorageWealth (state) {
         state.wealth = parseInt(localStorage.wealth)
     },
+    localStoragePerSecond (state) {
+        state.perSecond = parseInt(localStorage.perSecond)
+    },
     localStorageNetWorth (state) {
         state.netWorth = parseInt(localStorage.netWorth)
-    }
+    },
 
 }
 

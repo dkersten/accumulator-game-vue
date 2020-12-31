@@ -146,6 +146,10 @@ export default {
     beforeMount() {
         this.canPurchase()
     },
+    mounted() {
+        const myObj = this.$store.getters.franchise
+        console.log(myObj.numOwned, myObj.price)
+    },
 
     methods: {
         purchase(name) {
@@ -260,6 +264,9 @@ export default {
                     }
                 }
             }
+        },
+        localStorageSave() {
+            console.log("test")
         }
     },
 
