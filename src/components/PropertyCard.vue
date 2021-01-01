@@ -147,8 +147,8 @@ export default {
         this.canPurchase()
     },
     mounted() {
-        const myObj = this.$store.getters.franchise
-        console.log(myObj.numOwned, myObj.price)
+        // const myObj = this.$store.getters.franchise
+        // console.log(myObj.numOwned, myObj.price)
     },
 
     methods: {
@@ -156,6 +156,7 @@ export default {
             for (const property of this.properties) {
                 if (property.name === name) {
                     if (this.yourWealth >= property.price) {
+
                         // subtract property price from cash available
                         this.$store.commit('subtractPropertyPrice', property.price)
                         
@@ -195,9 +196,13 @@ export default {
                             property.price = Math.round(newPrice)
                         }
 
+                        // set numOwned and price in state
+                        let propNumOwned = property.numOwned
+                        this.$store.commit('updatePropertyStats', {name: name, num: propNumOwned, price: property.price})
+
                     } else {
-                    console.log("you have no power here")
-                }
+                        console.log("you have no power here")
+                    }
                 }
             }
         },

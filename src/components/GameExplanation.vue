@@ -30,6 +30,7 @@ export default {
             localStorage.setItem('wealth', this.$store.getters.yourWealth)
             localStorage.setItem('perSecond', this.$store.getters.perSecond)
             localStorage.setItem('netWorth', this.$store.getters.netWorth)
+            // localStorage.setItem('properties', this.)
         },
         clearProgress() {
             localStorage.clear()
