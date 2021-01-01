@@ -26,11 +26,18 @@ export default {
     },
     methods: {
         saveProgress() {
-            // let wealth = this.$store.getters.yourWealth
+            // wealth stats
             localStorage.setItem('wealth', this.$store.getters.yourWealth)
             localStorage.setItem('perSecond', this.$store.getters.perSecond)
             localStorage.setItem('netWorth', this.$store.getters.netWorth)
-            // localStorage.setItem('properties', this.)
+
+            // business properties
+            localStorage.setItem('vendingMachine', JSON.stringify(this.$store.getters.vendingMachine))
+            localStorage.setItem('foodCart', JSON.stringify(this.$store.getters.foodCart))
+            localStorage.setItem('foodTruck', JSON.stringify(this.$store.getters.foodTruck))
+            localStorage.setItem('restaurant', JSON.stringify(this.$store.getters.restaurant))
+            localStorage.setItem('franchise', JSON.stringify(this.$store.getters.franchise))
+            
         },
         clearProgress() {
             localStorage.clear()

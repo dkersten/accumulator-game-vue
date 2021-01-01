@@ -147,8 +147,29 @@ export default {
         this.canPurchase()
     },
     mounted() {
-        // const myObj = this.$store.getters.franchise
-        // console.log(myObj.numOwned, myObj.price)
+
+            if (localStorage.vendingMachine) {
+                let businessProperty = localStorage.getItem('vendingMachine')
+                this.localStorageProperty(businessProperty)
+
+            } 
+            // else if (localStorage.foodCart) {
+            //     let businessProperty = localStorage.getItem('foodCart')
+            //     this.localStorageProperty(businessProperty)
+
+            // } else if (localStorage.foodTruck) {
+            //     let businessProperty = localStorage.getItem('foodTruck')
+            //     this.localStorageProperty(businessProperty)
+
+            // } else if (localStorage.restaurant) {
+            //     let businessProperty = localStorage.getItem('restaurant')
+            //     this.localStorageProperty(businessProperty)
+
+            // } else if (localStorage.franchise) {
+            //     let businessProperty = localStorage.getItem('franchise')
+            //     this.localStorageProperty(businessProperty)
+
+            // }
     },
 
     methods: {
@@ -243,6 +264,7 @@ export default {
                 }
             }
         },
+
         setPrice() {
             
             if (this.buyProperties10) {
@@ -270,9 +292,20 @@ export default {
                 }
             }
         },
-        localStorageSave() {
-            console.log("test")
-        }
+
+        localStorageProperty(bProperty) {
+            let busnessProperty  = JSON.parse(bProperty)
+            const numOwnedLS = parseInt(busnessProperty.numOwned)
+            const priceLS = parseInt(busnessProperty.price)
+            const nameLS = busnessProperty.name
+
+            for (const property of this.properties) {
+                if (property.name === nameLS) {
+                    property.price = priceLS
+                    property.numOwned = numOwnedLS
+                }
+            }
+        },
     },
 
     watch: {
