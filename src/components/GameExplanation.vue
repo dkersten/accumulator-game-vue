@@ -32,15 +32,30 @@ export default {
             localStorage.setItem('netWorth', this.$store.getters.netWorth)
 
             // business properties
+            // console.log(this.$store.getters.vendingMachine.name, this.$store.getters.vendingMachine.price, this.$store.getters.vendingMachine.numOwned)
             localStorage.setItem('vendingMachine', JSON.stringify(this.$store.getters.vendingMachine))
+            // console.log(localStorage.getItem('vendingMachine'))
+
+            // console.log(this.$store.getters.foodCart.name, this.$store.getters.foodCart.price, this.$store.getters.foodCart.numOwned)
             localStorage.setItem('foodCart', JSON.stringify(this.$store.getters.foodCart))
+            // console.log(localStorage.getItem('foodCart'))
+
+            // console.log(this.$store.getters.foodTruck.name, this.$store.getters.foodTruck.price, this.$store.getters.foodTruck.numOwned)
             localStorage.setItem('foodTruck', JSON.stringify(this.$store.getters.foodTruck))
+            // console.log(localStorage.getItem('foodTruck'))
+
+            // console.log(this.$store.getters.restaurant.name, this.$store.getters.restaurant.price, this.$store.getters.restaurant.numOwned)
             localStorage.setItem('restaurant', JSON.stringify(this.$store.getters.restaurant))
+            // console.log(localStorage.getItem('restaurant'))
+
+            // console.log(this.$store.getters.franchise.name, this.$store.getters.franchise.price, this.$store.getters.franchise.numOwned)
             localStorage.setItem('franchise', JSON.stringify(this.$store.getters.franchise))
+            // console.log(localStorage.getItem('franchise'))
             
         },
         clearProgress() {
             localStorage.clear()
+            location.reload()
         }
     }
 }

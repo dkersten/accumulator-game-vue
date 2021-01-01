@@ -3,27 +3,27 @@ const state = {
     vendingMachine: {
         name: 'Vending Machine',
         numOwned: 0,
-        price: 0,
+        price: 200,
     },
     foodCart: {
         name: 'Food Cart',
         numOwned: 0,
-        price: 0,
+        price: 50000,
     },
     foodTruck: {
         name: 'Food Truck',
         numOwned: 0,
-        price: 0,
+        price: 100000,
     },
     restaurant: {
         name: 'Restaurant',
         numOwned: 0,
-        price: 0,
+        price: 2000000,
     },
     franchise: {
         name: 'Franchise of Restaurants',
         numOwned: 0,
-        price: 0,
+        price: 50000000,
     }
 }
 
@@ -49,23 +49,31 @@ const mutations = {
     },
     updatePropertyStats(state, payload) {
         if (payload.name === 'Vending Machine') {
-            state.vendingMachine.numOwned = payload.num
+            state.vendingMachine.numOwned += payload.num
             state.vendingMachine.price = payload.price
 
-        } else if (payload.name === 'Food Cart') {
-            state.foodCart.numOwned = payload.num
+        }
+        
+        if (payload.name === 'Food Cart') {
+            state.foodCart.numOwned += payload.num
             state.foodCart.price = payload.price
 
-        } else if (payload.name === 'Food Truck') {
-            state.foodTruck.numOwned = payload.num
+        }
+        
+        if (payload.name === 'Food Truck') {
+            state.foodTruck.numOwned += payload.num
             state.foodTruck.price = payload.price
 
-        } else if (payload.name === 'Restaurant') {
-            state.restaurant.numOwned = payload.num
+        }
+        
+        if (payload.name === 'Restaurant') {
+            state.restaurant.numOwned += payload.num
             state.restaurant.price = payload.price
 
-        } else if (payload.name === 'Franchise of Restaurants') {
-            state.franchise.numOwned = payload.num
+        }
+        
+        if (payload.name === 'Franchise of Restaurants') {
+            state.franchise.numOwned += payload.num
             state.franchise.price = payload.price
         }
     }

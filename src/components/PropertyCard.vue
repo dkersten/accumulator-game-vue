@@ -147,29 +147,6 @@ export default {
         this.canPurchase()
     },
     mounted() {
-
-            if (localStorage.vendingMachine) {
-                let businessProperty = localStorage.getItem('vendingMachine')
-                this.localStorageProperty(businessProperty)
-
-            } 
-            // else if (localStorage.foodCart) {
-            //     let businessProperty = localStorage.getItem('foodCart')
-            //     this.localStorageProperty(businessProperty)
-
-            // } else if (localStorage.foodTruck) {
-            //     let businessProperty = localStorage.getItem('foodTruck')
-            //     this.localStorageProperty(businessProperty)
-
-            // } else if (localStorage.restaurant) {
-            //     let businessProperty = localStorage.getItem('restaurant')
-            //     this.localStorageProperty(businessProperty)
-
-            // } else if (localStorage.franchise) {
-            //     let businessProperty = localStorage.getItem('franchise')
-            //     this.localStorageProperty(businessProperty)
-
-            // }
     },
 
     methods: {
@@ -218,8 +195,11 @@ export default {
                         }
 
                         // set numOwned and price in state
-                        let propNumOwned = property.numOwned
-                        this.$store.commit('updatePropertyStats', {name: name, num: propNumOwned, price: property.price})
+                        if (this.$store.getters.buyProperties10) {
+                            this.$store.commit('updatePropertyStats', {name: name, num: 10, price: property.price})
+                        } else {
+                            this.$store.commit('updatePropertyStats', {name: name, num: 1, price: property.price})
+                        }
 
                     } else {
                         console.log("you have no power here")
@@ -301,8 +281,8 @@ export default {
 
             for (const property of this.properties) {
                 if (property.name === nameLS) {
-                    property.price = priceLS
-                    property.numOwned = numOwnedLS
+                        property.price = priceLS
+                        property.numOwned = numOwnedLS
                 }
             }
         },
