@@ -51,30 +51,31 @@ const mutations = {
         if (payload.name === 'Vending Machine') {
             state.vendingMachine.numOwned += payload.num
             state.vendingMachine.price = payload.price
-
+            console.log('Vending Machine', state.vendingMachine.numOwned, state.vendingMachine.price)
         }
         
         if (payload.name === 'Food Cart') {
             state.foodCart.numOwned += payload.num
             state.foodCart.price = payload.price
-
+            console.log('Food Cart', state.foodCart.numOwned, state.foodCart.price)
         }
         
         if (payload.name === 'Food Truck') {
             state.foodTruck.numOwned += payload.num
             state.foodTruck.price = payload.price
-
+            console.log('Food Truck', state.foodTruck.numOwned, state.foodTruck.price)
         }
         
         if (payload.name === 'Restaurant') {
             state.restaurant.numOwned += payload.num
             state.restaurant.price = payload.price
-
+            console.log('Restaurant', state.restaurant.numOwned, state.restaurant.price)
         }
         
         if (payload.name === 'Franchise of Restaurants') {
             state.franchise.numOwned += payload.num
             state.franchise.price = payload.price
+            console.log('Franchise of Restaurants', state.franchise.numOwned, state.franchise.price)
         }
     }
 }
