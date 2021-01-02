@@ -32,7 +32,26 @@ export default {
             localStorage.setItem('netWorth', this.$store.getters.netWorth)
 
             // business properties
+            if (this.$store.getters.vendingMachine.numOwned !== 0) {
+                localStorage.setItem('vendingMachine', JSON.stringify(this.$store.getters.vendingMachine))
+            }
 
+            if (this.$store.getters.foodCart.numOwned !== 0) {
+                localStorage.setItem('foodCart', JSON.stringify(this.$store.getters.foodCart))
+            }
+
+            if (this.$store.getters.foodTruck.numOwned !== 0) {
+                localStorage.setItem('foodTruck', JSON.stringify(this.$store.getters.foodTruck))
+            }
+
+            if (this.$store.getters.restaurant.numOwned !== 0) {
+                localStorage.setItem('restaurant', JSON.stringify(this.$store.getters.restaurant))
+            }
+
+            if (this.$store.getters.franchise.numOwned !== 0) {
+                localStorage.setItem('franchise', JSON.stringify(this.$store.getters.franchise))
+            }
+            
             
         },
         clearProgress() {

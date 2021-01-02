@@ -126,7 +126,9 @@ export default {
                     totalCombinedPrice: 0
                 }
             ],
-            priceIncrease: 1.25
+            priceIncrease: 1.25,
+            currentPropertyPrice: 0,
+            currentPropertyNumOwned: 0
         }
     },
 
@@ -147,6 +149,77 @@ export default {
         this.canPurchase()
     },
     mounted() {
+
+        if (localStorage.getItem('vendingMachine') !== null) {
+            // get property from local storage and parse it via method below
+            let vendingMachineLS = localStorage.getItem('vendingMachine')
+            this.parseLocalStorageProperty(vendingMachineLS)
+
+            // update state with info from local storage
+            this.$store.commit('updateVendingStatsOnMount', {numOwned: this.currentPropertyNumOwned, price: this.currentPropertyPrice})
+            
+            // set property stats on card (UI) with info from state
+            const vendingProperty = this.properties[0]
+            vendingProperty.price = this.$store.getters.vendingMachine.price
+            vendingProperty.numOwned = this.$store.getters.vendingMachine.numOwned
+        }
+
+        if (localStorage.getItem('foodCart') !== null) {
+            // get property from local storage and parse it via method below
+            let foodCardLS = localStorage.getItem('foodCart')
+            this.parseLocalStorageProperty(foodCardLS)
+
+            // update state with info from local storage
+            this.$store.commit('updateFoodCartOnMount', {numOwned: this.currentPropertyNumOwned, price: this.currentPropertyPrice})
+
+            // set property stats on card (UI) with info from state
+            const foodCartProperty = this.properties[1]
+            foodCartProperty.price = this.$store.getters.foodCart.price
+            foodCartProperty.numOwned = this.$store.getters.foodCart.numOwned
+        }
+
+        if (localStorage.getItem('foodTruck') !== null) {
+            // get property from local storage and parse it via method below
+            let foodTruckLS = localStorage.getItem('foodTruck')
+            this.parseLocalStorageProperty(foodTruckLS)
+
+            // update state with info from local storage
+            this.$store.commit('updateFoodTruckOnMount', {numOwned: this.currentPropertyNumOwned, price: this.currentPropertyPrice})
+
+            // set property stats on card (UI) with info from state
+            const foodTruckProperty = this.properties[2]
+            foodTruckProperty.price = this.$store.getters.foodTruck.price
+            foodTruckProperty.numOwned = this.$store.getters.foodTruck.numOwned
+        }
+
+        if (localStorage.getItem('restaurant') !== null) {
+            // get property from local storage and parse it via method below
+            let restaurantLS = localStorage.getItem('restaurant')
+            this.parseLocalStorageProperty(restaurantLS)
+
+            // update state with info from local storage
+            this.$store.commit('updateRestaurantOnMount', {numOwned: this.currentPropertyNumOwned, price: this.currentPropertyPrice})
+
+            // set property stats on card (UI) with info from state
+            const restaurantProperty = this.properties[3]
+            restaurantProperty.price = this.$store.getters.restaurant.price
+            restaurantProperty.numOwned = this.$store.getters.restaurant.numOwned
+        }
+
+        if (localStorage.getItem('franchise') !== null) {
+            // get property from local storage and parse it via method below
+            let franchiseLS = localStorage.getItem('franchise')
+            this.parseLocalStorageProperty(franchiseLS)
+
+            // update state with info from local storage
+            this.$store.commit('updateFranchiseOnMount', {numOwned: this.currentPropertyNumOwned, price: this.currentPropertyPrice})
+
+            // set property stats on card (UI) with info from state
+            const franchiseProperty = this.properties[4]
+            franchiseProperty.price = this.$store.getters.franchise.price
+            franchiseProperty.numOwned = this.$store.getters.franchise.numOwned
+        }
+            
     },
 
     methods: {
@@ -273,18 +346,10 @@ export default {
             }
         },
 
-        localStorageProperty(bProperty) {
-            let busnessProperty  = JSON.parse(bProperty)
-            const numOwnedLS = parseInt(busnessProperty.numOwned)
-            const priceLS = parseInt(busnessProperty.price)
-            const nameLS = busnessProperty.name
-
-            for (const property of this.properties) {
-                if (property.name === nameLS) {
-                        property.price = priceLS
-                        property.numOwned = numOwnedLS
-                }
-            }
+        parseLocalStorageProperty(bProperty) {
+            let businessProperty  = JSON.parse(bProperty)
+            this.currentPropertyNumOwned = parseInt(businessProperty.numOwned)
+            this.currentPropertyPrice = parseInt(businessProperty.price)
         },
     },
 

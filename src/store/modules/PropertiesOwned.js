@@ -77,7 +77,33 @@ const mutations = {
             state.franchise.price = payload.price
             console.log('Franchise of Restaurants', state.franchise.numOwned, state.franchise.price)
         }
-    }
+    },
+
+    updateVendingStatsOnMount(state, payload) {
+        state.vendingMachine.price = payload.price
+        state.vendingMachine.numOwned = payload.numOwned
+    },
+
+    updateFoodCartOnMount(state, payload) {
+        state.foodCart.price = payload.price
+        state.foodCart.numOwned = payload.numOwned
+    },
+
+    updateFoodTruckOnMount(state, payload) {
+        state.foodTruck.price = payload.price
+        state.foodTruck.numOwned = payload.numOwned
+    },
+
+    updateRestaurantOnMount(state, payload) {
+        state.restaurant.price = payload.price
+        state.restaurant.numOwned = payload.numOwned
+    },
+
+    updateFranchiseOnMount(state, payload) {
+        state.franchise.price = payload.price
+        state.franchise.numOwned = payload.numOwned
+    },
+
 }
 
 export default {
