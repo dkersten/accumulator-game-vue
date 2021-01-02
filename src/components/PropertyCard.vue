@@ -162,6 +162,9 @@ export default {
             const vendingProperty = this.properties[0]
             vendingProperty.price = this.$store.getters.vendingMachine.price
             vendingProperty.numOwned = this.$store.getters.vendingMachine.numOwned
+
+            // update can buy upgrades boolean in state
+            this.$store.commit('showUpgrades')
         }
 
         if (localStorage.getItem('foodCart') !== null) {
@@ -176,6 +179,9 @@ export default {
             const foodCartProperty = this.properties[1]
             foodCartProperty.price = this.$store.getters.foodCart.price
             foodCartProperty.numOwned = this.$store.getters.foodCart.numOwned
+
+            // update can buy upgrades boolean in state
+            this.$store.commit('showUpgrades')
         }
 
         if (localStorage.getItem('foodTruck') !== null) {
@@ -190,6 +196,9 @@ export default {
             const foodTruckProperty = this.properties[2]
             foodTruckProperty.price = this.$store.getters.foodTruck.price
             foodTruckProperty.numOwned = this.$store.getters.foodTruck.numOwned
+
+            // update can buy upgrades boolean in state
+            this.$store.commit('showUpgrades')
         }
 
         if (localStorage.getItem('restaurant') !== null) {
@@ -204,6 +213,9 @@ export default {
             const restaurantProperty = this.properties[3]
             restaurantProperty.price = this.$store.getters.restaurant.price
             restaurantProperty.numOwned = this.$store.getters.restaurant.numOwned
+
+            // update can buy upgrades boolean in state
+            this.$store.commit('showUpgrades')
         }
 
         if (localStorage.getItem('franchise') !== null) {
@@ -218,6 +230,9 @@ export default {
             const franchiseProperty = this.properties[4]
             franchiseProperty.price = this.$store.getters.franchise.price
             franchiseProperty.numOwned = this.$store.getters.franchise.numOwned
+
+            // update can buy upgrades boolean in state
+            this.$store.commit('showUpgrades')
         }
             
     },
@@ -273,6 +288,9 @@ export default {
                         } else {
                             this.$store.commit('updatePropertyStats', {name: name, num: 1, price: property.price})
                         }
+
+                        // update state to show business purchase upgrades
+                        this.$store.commit('showUpgrades')
 
                     } else {
                         console.log("you have no power here")

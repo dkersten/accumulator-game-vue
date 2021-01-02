@@ -106,7 +106,7 @@ export default {
                     canBuy: false
                 },
             ],
-            showUpgrades: false,
+            // showUpgrades: false,
             priceIncrease: 1.15
         }
     },
@@ -117,6 +117,9 @@ export default {
         },
         totalProperties() {
             return this.$store.getters.totalPropertiesOwned
+        },
+        showUpgrades() {
+            return this.$store.getters.showUpgrades
         }
     },
 
