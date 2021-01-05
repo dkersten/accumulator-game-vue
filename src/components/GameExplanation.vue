@@ -51,6 +51,31 @@ export default {
             if (this.$store.getters.franchise.numOwned !== 0) {
                 localStorage.setItem('franchise', JSON.stringify(this.$store.getters.franchise))
             }
+
+            // business upgrades
+            if (this.$store.getters.ingredientsQuality.numOwned !== 0) {
+                localStorage.setItem('ingredientsQuality', JSON.stringify(this.$store.getters.ingredientsQuality))
+            }
+
+            if (this.$store.getters.employeeTraining.numOwned !== 0) {
+                localStorage.setItem('employeeTraining', JSON.stringify(this.$store.getters.employeeTraining))
+            }
+
+            if (this.$store.getters.smMarketing.numOwned !== 0) {
+                localStorage.setItem('smMarketing', JSON.stringify(this.$store.getters.smMarketing))
+            }
+
+            if (this.$store.getters.printMarketing.numOwned !== 0) {
+                localStorage.setItem('printMarketing', JSON.stringify(this.$store.getters.printMarketing))
+            }
+
+            if (this.$store.getters.tvMarketing.numOwned !== 0) {
+                localStorage.setItem('tvMarketing', JSON.stringify(this.$store.getters.tvMarketing))
+            }
+
+            if (this.$store.getters.logisticsUpgrade.numOwned !== 0) {
+                localStorage.setItem('logisticsUpgrade', JSON.stringify(this.$store.getters.logisticsUpgrade))
+            }
             
             
         },
