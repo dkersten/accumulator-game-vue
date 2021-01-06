@@ -107,7 +107,9 @@ export default {
                 },
             ],
             // showUpgrades: false,
-            priceIncrease: 1.15
+            priceIncrease: 1.15,
+            currentUpgradeNumOwned: 0,
+            currentUpgradePrice: 0
         }
     },
 
@@ -125,6 +127,100 @@ export default {
 
     beforeMount() {
         this.canPurchase()
+    },
+
+    mounted() {
+
+        if (localStorage.getItem('ingredientsQuality') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let ingredientsQualityLS = localStorage.getItem('ingredientsQuality')
+            this.parseLocalStorageUpgrade(ingredientsQualityLS)
+
+            // update state with info from local storage
+            this.$store.commit('ingredientsQuality', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const ingredientsQualityUpgrade = this.purchases[0]
+            ingredientsQualityUpgrade.price = this.$store.getters.ingredientsQuality.price
+            ingredientsQualityUpgrade.numOwned = this.$store.getters.ingredientsQuality.numOwned
+
+        }
+
+        if (localStorage.getItem('employeeTraining') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let employeeTrainingLS = localStorage.getItem('employeeTraining')
+            this.parseLocalStorageUpgrade(employeeTrainingLS)
+
+            // update state with info from local storage
+            this.$store.commit('employeeTraining', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const employeeTrainingUpgrade = this.purchases[1]
+            employeeTrainingUpgrade.price = this.$store.getters.employeeTraining.price
+            employeeTrainingUpgrade.numOwned = this.$store.getters.employeeTraining.numOwned
+
+        }
+
+        if (localStorage.getItem('smMarketing') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let smMarketingLS = localStorage.getItem('smMarketing')
+            this.parseLocalStorageUpgrade(smMarketingLS)
+
+            // update state with info from local storage
+            this.$store.commit('smMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const smMarketingUpgrade = this.purchases[2]
+            smMarketingUpgrade.price = this.$store.getters.smMarketing.price
+            smMarketingUpgrade.numOwned = this.$store.getters.smMarketing.numOwned
+
+        }
+
+        if (localStorage.getItem('printMarketing') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let printMarketingLS = localStorage.getItem('printMarketing')
+            this.parseLocalStorageUpgrade(printMarketingLS)
+
+            // update state with info from local storage
+            this.$store.commit('printMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const printMarketingUpgrade = this.purchases[3]
+            printMarketingUpgrade.price = this.$store.getters.printMarketing.price
+            printMarketingUpgrade.numOwned = this.$store.getters.printMarketing.numOwned
+
+        }
+
+        if (localStorage.getItem('tvMarketing') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let tvMarketingLS = localStorage.getItem('tvMarketing')
+            this.parseLocalStorageUpgrade(tvMarketingLS)
+
+            // update state with info from local storage
+            this.$store.commit('tvMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const tvMarketingUpgrade = this.purchases[4]
+            tvMarketingUpgrade.price = this.$store.getters.tvMarketing.price
+            tvMarketingUpgrade.numOwned = this.$store.getters.tvMarketing.numOwned
+
+        }
+
+        if (localStorage.getItem('logisticsUpgrade') !== null) {
+            // get upgrade from local storage and parse it via method below
+            let logisticsUpgradeLS = localStorage.getItem('logisticsUpgrade')
+            this.parseLocalStorageUpgrade(logisticsUpgradeLS)
+
+            // update state with info from local storage
+            this.$store.commit('logisticsUpgrade', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            
+            // set upgrade stats on card (UI) with info from state
+            const logisticsUpgradeUpgrade = this.purchases[5]
+            logisticsUpgradeUpgrade.price = this.$store.getters.logisticsUpgrade.price
+            logisticsUpgradeUpgrade.numOwned = this.$store.getters.logisticsUpgrade.numOwned
+
+        }
+
     },
 
     methods: {
@@ -147,12 +243,17 @@ export default {
                         // increase price of purchased upgrade
                         const newPrice = purchase.price * this.priceIncrease
                         purchase.price = Math.round(newPrice)
+
+                        // set numOwned and price in state
+                        this.$store.commit('updateBusinessUpgradeStats', {name: name, num: 1, price: purchase.price})
+
                     } else {
                         console.log("you have no power here")
                     }
                 }
             }
         },
+
         canPurchase() {
             for (const purchase of this.purchases) {
                 if (this.yourWealth >= purchase.price) {
@@ -161,7 +262,13 @@ export default {
                     purchase.canBuy = false
                 }
             }
-        }
+        },
+
+        parseLocalStorageUpgrade(bProperty) {
+            let businessUpgrade  = JSON.parse(bProperty)
+            this.currentPropertyNumOwned = parseInt(businessUpgrade.numOwned)
+            this.currentPropertyPrice = parseInt(businessUpgrade.price)
+        },
     },
 
     watch: {
