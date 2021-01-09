@@ -486,10 +486,11 @@ export default {
         let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
         
         for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
-          // console.log(rwPurchaseIDsLS[i])
             for (const property of this.properties) {
               if (property.num === rwPurchaseIDsLS[i]) {
                 property.purchased = true
+                property.numOwned = 1
+                this.$store.commit('addRWPurchaseID', rwPurchaseIDsLS[i])
               }
             }
         }
