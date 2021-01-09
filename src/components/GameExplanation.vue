@@ -76,6 +76,12 @@ export default {
             if (this.$store.getters.logisticsUpgrade.numOwned !== 0) {
                 localStorage.setItem('logisticsUpgrade', JSON.stringify(this.$store.getters.logisticsUpgrade))
             }
+
+            // RW purchases
+            if (this.$store.getters.rwPurchasesOwnedIDs.length !== 0) {
+                localStorage.setItem('rwPurchaseIDs', JSON.stringify(this.$store.getters.rwPurchasesOwnedIDs))
+                console.log(localStorage.getItem('rwPurchaseIDs'))
+            }
             
             
         },

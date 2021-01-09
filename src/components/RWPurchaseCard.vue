@@ -423,7 +423,7 @@ export default {
                     canSell: true
                 },
                 {
-                    num: 19,
+                    num: 18,
                     title: "Townhome in Chicago, IL",
                     price: 454900,
                     features: [
@@ -480,6 +480,23 @@ export default {
         this.sortByPrice()
     },
 
+    mounted() {
+      
+      if (localStorage.getItem('rwPurchaseIDs') !== null) {
+        let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
+        
+        for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
+          // console.log(rwPurchaseIDsLS[i])
+            for (const property of this.properties) {
+              if (property.num === rwPurchaseIDsLS[i]) {
+                property.purchased = true
+              }
+            }
+        }
+      }
+
+    },
+
     methods: {
       purchaseRWProperty(title) {
         for (const property of this.properties) {
@@ -501,6 +518,9 @@ export default {
 
                   // disable additional purchases
                   property.purchased = true
+
+                  // add RW purchase ID in array in state
+                  this.$store.commit('addRWPurchaseID', property.num)
 
                 } else {
                     console.log("you have no power here")
@@ -575,6 +595,10 @@ export default {
               // reset num owned and purchased boolean
               property.numOwned = 0
               property.purchased = false
+
+              // update RW purchase ID array in state
+              this.$store.commit('removeRWPurchaseID', property.num)
+
             }
           }
         }
