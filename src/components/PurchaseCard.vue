@@ -135,9 +135,10 @@ export default {
             // get upgrade from local storage and parse it via method below
             let ingredientsQualityLS = localStorage.getItem('ingredientsQuality')
             this.parseLocalStorageUpgrade(ingredientsQualityLS)
+            console.log(ingredientsQualityLS)
 
             // update state with info from local storage
-            this.$store.commit('ingredientsQuality', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updateIngredientsQualityOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const ingredientsQualityUpgrade = this.purchases[0]
@@ -152,7 +153,7 @@ export default {
             this.parseLocalStorageUpgrade(employeeTrainingLS)
 
             // update state with info from local storage
-            this.$store.commit('employeeTraining', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updateEmployeeTrainingOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const employeeTrainingUpgrade = this.purchases[1]
@@ -167,7 +168,7 @@ export default {
             this.parseLocalStorageUpgrade(smMarketingLS)
 
             // update state with info from local storage
-            this.$store.commit('smMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updateSmMarketingOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const smMarketingUpgrade = this.purchases[2]
@@ -182,7 +183,7 @@ export default {
             this.parseLocalStorageUpgrade(printMarketingLS)
 
             // update state with info from local storage
-            this.$store.commit('printMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updatePrintMarketingOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const printMarketingUpgrade = this.purchases[3]
@@ -197,7 +198,7 @@ export default {
             this.parseLocalStorageUpgrade(tvMarketingLS)
 
             // update state with info from local storage
-            this.$store.commit('tvMarketing', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updateTvMarketingOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const tvMarketingUpgrade = this.purchases[4]
@@ -212,7 +213,7 @@ export default {
             this.parseLocalStorageUpgrade(logisticsUpgradeLS)
 
             // update state with info from local storage
-            this.$store.commit('logisticsUpgrade', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
+            this.$store.commit('updateLogisticsUpgradeOnMount', {numOwned: this.currentUpgradeNumOwned, price: this.currentUpgradePrice})
             
             // set upgrade stats on card (UI) with info from state
             const logisticsUpgradeUpgrade = this.purchases[5]
@@ -266,8 +267,8 @@ export default {
 
         parseLocalStorageUpgrade(bProperty) {
             let businessUpgrade  = JSON.parse(bProperty)
-            this.currentPropertyNumOwned = parseInt(businessUpgrade.numOwned)
-            this.currentPropertyPrice = parseInt(businessUpgrade.price)
+            this.currentUpgradeNumOwned = parseInt(businessUpgrade.numOwned)
+            this.currentUpgradePrice = parseInt(businessUpgrade.price)
         },
     },
 
