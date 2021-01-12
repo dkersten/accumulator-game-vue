@@ -80,7 +80,6 @@ export default {
             // RW purchases
             if (this.$store.getters.rwPurchasesOwnedIDs.length !== 0) {
                 localStorage.setItem('rwPurchaseIDs', JSON.stringify(this.$store.getters.rwPurchasesOwnedIDs))
-                console.log(localStorage.getItem('rwPurchaseIDs'))
             }
             
             
