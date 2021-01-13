@@ -472,6 +472,10 @@ export default {
 
       buyProperties() {
         return this.$store.getters.buyRWProperties
+      },
+
+      rwPurchasesOwnedIDs() {
+        return this.$store.getters.rwPurchasesOwnedIDs
       }
     },
 
@@ -603,6 +607,22 @@ export default {
             }
           }
         }
+      },
+
+      updateBuySellAbility() {
+        if (localStorage.getItem('rwPurchaseIDs') !== null) {
+          let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
+          
+          for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
+              for (const property of this.properties) {
+                if (property.num === rwPurchaseIDsLS[i]) {
+                  property.purchased = true
+                  property.numOwned = 1
+                  this.$store.commit('addRWPurchaseID', rwPurchaseIDsLS[i])
+                }
+              }
+          }
+        }
       }
     },
 
@@ -613,6 +633,10 @@ export default {
 
       priceSorting() {
         this.sortByPrice()
+      },
+
+      rwPurchasesOwnedIDs() {
+        this.updateBuySellAbility()
       }
     }
 }
