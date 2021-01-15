@@ -27,11 +27,13 @@ export default {
     },
 
     mounted() {
-        // this.$set(this.$store.dispatch('fetchRichest'))
+        // comment out when using manual data
+        this.$set(this.$store.dispatch('fetchRichest'))
     },
 
     data() {
         return {
+            // don't need when using computed value for people
             // people: []
         }
     },

@@ -608,24 +608,6 @@ export default {
           }
         }
       },
-
-      // updateBuySellAbility() {
-      //   console.log("got here")
-      //   if (localStorage.getItem('rwPurchaseIDs') !== null) {
-      //     // let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
-      //     // // console.log(rwPurchaseIDsLS)
-          
-      //     // for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
-      //     //     for (const property of this.properties) {
-      //     //       if (property.num === rwPurchaseIDsLS[i]) {
-      //     //         property.purchased = true
-      //     //         property.numOwned = 1
-      //     //         this.$store.commit('addRWPurchaseID', rwPurchaseIDsLS[i])
-      //     //       }
-      //     //     }
-      //     // }
-      //   }
-      // }
     },
 
     watch: {
@@ -636,10 +618,6 @@ export default {
       priceSorting() {
         this.sortByPrice()
       },
-
-      // rwPurchasesOwnedIDs() {
-      //   this.updateBuySellAbility()
-      // }
     }
 }
 </script>
