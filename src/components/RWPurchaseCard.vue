@@ -53,7 +53,7 @@
                             :disabled="property.numOwned === 0"
                             class="sell"
                             v-bind:class="property.numOwned > 0 ? 'enabled' : 'disabled'"
-                            @click="sellRWProperty(property.name)"
+                            @click="sellRWProperty(property.title)"
                         >
                             Sell
                         </button>
@@ -581,7 +581,7 @@ export default {
 
       sellRWProperty(name) {
         for (const property of this.properties) {
-          if (property.name === name) {
+          if (property.title === name) {
             if (property.numOwned > 0) {
               let amountToSell = Math.round(property.price * .8)
 
@@ -609,21 +609,23 @@ export default {
         }
       },
 
-      updateBuySellAbility() {
-        if (localStorage.getItem('rwPurchaseIDs') !== null) {
-          let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
+      // updateBuySellAbility() {
+      //   console.log("got here")
+      //   if (localStorage.getItem('rwPurchaseIDs') !== null) {
+      //     // let rwPurchaseIDsLS = JSON.parse(localStorage.getItem('rwPurchaseIDs'))
+      //     // // console.log(rwPurchaseIDsLS)
           
-          for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
-              for (const property of this.properties) {
-                if (property.num === rwPurchaseIDsLS[i]) {
-                  property.purchased = true
-                  property.numOwned = 1
-                  this.$store.commit('addRWPurchaseID', rwPurchaseIDsLS[i])
-                }
-              }
-          }
-        }
-      }
+      //     // for (let i = 0; i < rwPurchaseIDsLS.length; i++) {
+      //     //     for (const property of this.properties) {
+      //     //       if (property.num === rwPurchaseIDsLS[i]) {
+      //     //         property.purchased = true
+      //     //         property.numOwned = 1
+      //     //         this.$store.commit('addRWPurchaseID', rwPurchaseIDsLS[i])
+      //     //       }
+      //     //     }
+      //     // }
+      //   }
+      // }
     },
 
     watch: {
@@ -635,9 +637,9 @@ export default {
         this.sortByPrice()
       },
 
-      rwPurchasesOwnedIDs() {
-        this.updateBuySellAbility()
-      }
+      // rwPurchasesOwnedIDs() {
+      //   this.updateBuySellAbility()
+      // }
     }
 }
 </script>

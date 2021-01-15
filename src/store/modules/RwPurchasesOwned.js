@@ -22,11 +22,9 @@ const mutations = {
         }
     },
     removeRWPurchaseID(state, id) {
-        console.log(id, state.rwPurchasesOwnedIDs)
         if (state.rwPurchasesOwnedIDs.includes(id)) {
             const updatedArray = state.rwPurchasesOwnedIDs.filter(item => item !== id)
-            console.log(updatedArray)
-            // state.rwPurchasesOwnedIDs = updatedArray
+            state.rwPurchasesOwnedIDs = updatedArray
         }
     }
 }
