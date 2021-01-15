@@ -2,6 +2,7 @@ const state = {
     wealth: 100000000,
     perSecond: 0,
     netWorth: 100000000
+    // enjoy the free money
 }
 
 const getters = {
