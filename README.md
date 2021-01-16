@@ -5,7 +5,7 @@ The accumulator game is a silly game where you can make money by clicking a doll
 
 You can play a version [here](https://accumulator-game.netlify.app/).
 
-And if you're impatient you can play a version with a ton of starting money [here](https://accumulator-game-cheaty-version.netlify.app/). Note this version does not have the real world people richest list.
+And if you're impatient you can play a version with a ton of starting money [here](https://accumulator-game-cheaty-version.netlify.app/).
 
 ![Image of Accumulator Game user interface](http://danielkersten.io/assets/project-accumulator-game.png)
 
@@ -22,19 +22,9 @@ npm run serve
 ## Built With
 - Vue
 - SCSS
+- LocalStorage integration to pick up where you left off
 - Deployed on Netlify
 
 [Previous version](https://github.com/dkersten/accumulator-game) built with HTML, CSS, and vanilla Javascript ES6
-
-## Roadmap
-
-I intend to continue iterating on this project. Initially I plan to:
-
-- Add near real time updates to the real people net worth list
-- Allow you to sell buinesses back
-- Bulk purchase properties and upgrades
-- Disallow purchasing multiple "real world" properties where it doesn't make sense (i.e. can't buy the same sports team twice)
-
-Long term I'd like to implement a feature allowing you to pick up where you left off if you close the game.
 
 Enjoy playing!
